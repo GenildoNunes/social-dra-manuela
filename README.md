@@ -14,7 +14,9 @@ Agente (semanal) ──► posts/ (rascunho) ──► aprovação no Telegram �
 | `posts/` | Um post por pasta: `post.yaml` + imagens `slide-XX.png` geradas |
 | `pautas/` | Pedidos pontuais para o agente (ex.: "falar de clareamento antes do Natal") |
 | `templates/` | Template HTML das artes (identidade visual) |
-| `scripts/render.py` | Gera as imagens a partir do `post.yaml` e a `posts/previa.html` |
+| `scripts/render.py` | Gera as imagens (JPEG) a partir do `post.yaml` e a `posts/previa.html` |
+| `scripts/publicar.py` | Publica os posts `aprovado` no horário (roda no GitHub Actions) |
+| `scripts/configurar_meta.py` | Configuração única do token do Instagram |
 | `CLAUDE.md` | Instruções do agente de conteúdo |
 
 ## Status de um post
@@ -35,7 +37,7 @@ Abra `posts/previa.html` para ver a semana.
 
 - [x] Guia de marca, estratégia e templates
 - [x] Gerador de artes + prévia
-- [ ] Publicador automático (Instagram Graph API + GitHub Actions)
+- [x] Publicador automático (Instagram Graph API + GitHub Actions) — falta [configurar o token](docs/configurar-instagram.md)
 - [ ] Bot do Telegram: aprovação e envio de vídeos pela Dra.
 - [ ] Agente semanal agendado na nuvem
 - [ ] Relatório mensal de desempenho

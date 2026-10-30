@@ -1,4 +1,4 @@
-"""Renderiza os posts (posts/<pasta>/post.yaml) em imagens PNG e gera uma prévia HTML.
+"""Renderiza os posts (posts/<pasta>/post.yaml) em imagens JPEG e gera uma prévia HTML.
 
 Uso:
     python scripts/render.py                 # renderiza todos os posts sem imagens
@@ -42,7 +42,7 @@ def renderizar_post(pasta: Path, page, env):
     page.set_viewport_size({"width": w, "height": h})
     tpl = env.get_template("slide.html.j2")
 
-    for antigo in pasta.glob("slide-*.png"):
+    for antigo in pasta.glob("slide-*.*"):
         antigo.unlink()
 
     slides = post["slides"]
@@ -50,7 +50,8 @@ def renderizar_post(pasta: Path, page, env):
         page.set_content(tpl.render(s=s, idx=i, total=len(slides), w=w, h=h, story=story))
         page.wait_for_load_state("networkidle")
         page.evaluate("document.fonts.ready")
-        page.screenshot(path=str(pasta / f"slide-{i:02d}.png"))
+        # A API do Instagram só aceita JPEG.
+        page.screenshot(path=str(pasta / f"slide-{i:02d}.jpg"), type="jpeg", quality=92)
     print(f"  ✓ {pasta.name}: {len(slides)} imagem(ns)")
     return post
 
@@ -61,7 +62,7 @@ def gerar_previa(itens):
     for pasta, post in itens:
         imgs = "".join(
             f'<img src="{p.relative_to(POSTS).as_posix()}" loading="lazy">'
-            for p in sorted(pasta.glob("slide-*.png"))
+            for p in sorted(pasta.glob("slide-*.jpg"))
         )
         tags = " ".join("#" + t.lstrip("#") for t in post.get("hashtags", []))
         aviso = '<span class="revisar">⚠ revisar</span>' if post.get("revisar") else ""
@@ -100,7 +101,7 @@ def main():
     elif args.todos:
         alvo = todas
     else:
-        alvo = [p for p in todas if not any(p.glob("slide-*.png"))]
+        alvo = [p for p in todas if not any(p.glob("slide-*.jpg"))]
 
     env = carregar_env()
     with sync_playwright() as pw:

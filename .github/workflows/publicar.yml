@@ -1,0 +1,47 @@
+name: Publicar no Instagram
+
+on:
+  schedule:
+    # De hora em hora, das 8h às 20h de Recife (UTC-3). O GitHub pode atrasar alguns minutos.
+    - cron: "5 11-23 * * *"
+  workflow_dispatch:
+    inputs:
+      simulacao:
+        description: "Só simular (não publica)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml requests
+
+      - name: Publicar posts aprovados
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          REPO_RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/main
+          DRY_RUN: ${{ inputs.simulacao && '1' || '0' }}
+        run: python scripts/publicar.py
+
+      - name: Registrar o que foi publicado
+        if: always()
+        run: |
+          git config user.name "robo-social"
+          git config user.email "robo-social@users.noreply.github.com"
+          git add posts
+          git diff --cached --quiet || (git commit -m "Publicados: $(date -u +%F)" && git push)
