@@ -1,0 +1,35 @@
+data: 2026-11-06
+hora: "12:00"
+formato: carrossel
+pilar: vitrine
+status: rascunho
+slides:
+  - tipo: capa
+    tag: Cuidado completo
+    titulo: "Seu sorriso inteiro, em *um só lugar*"
+    subtitulo: "Do aparelho ao implante: avaliação completa e equipe de especialistas parceiros."
+  - tipo: lista
+    titulo: "O que cuidamos *aqui*"
+    itens:
+      - "Ortodontia — aparelhos e alinhadores"
+      - "Clareamento dental"
+      - "Estética — lentes e facetas"
+      - "Implantes e próteses"
+      - "Canal, cirurgias e sisos"
+      - "Limpeza e restaurações"
+  - tipo: texto
+    titulo: "Como *funciona*"
+    texto: "Na avaliação, eu olho o seu sorriso como um todo e monto o plano de tratamento com você.\n\nQuando o caso pede outra especialidade, você é atendido pela nossa equipe de especialistas parceiros — no mesmo consultório."
+  - tipo: cta
+    titulo: "Comece pela *avaliação*"
+    subtitulo: "Olinda Shopping, sala 40 — pertinho de você."
+legenda: |
+  Sabe aquela correria de ir num dentista para cada coisa? Aqui não precisa 💖
+
+  No consultório você encontra cuidado completo para o sorriso: ortodontia, clareamento, estética, implantes, próteses, canal, cirurgias e prevenção. Eu faço a sua avaliação e, quando o caso pede outra especialidade, você conta com a nossa equipe de especialistas parceiros 🦷✨
+
+  📍 Olinda Shopping, sala 40 — Bairro Novo, Olinda
+  📲 Agende pelo WhatsApp no link da bio
+
+  Dra. Manuela Gondim · Ortodontista · CRO-PE 14.254
+hashtags: [dentistaolinda, dentistarecife, ortodontiaolinda, implantedentario, clareamentodental, odontologia, olinda]

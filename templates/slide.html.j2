@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #E22B8D; --pink-dark: #B81C6F; --gold: #B8955A; --gold-soft: #E9DCC4;
+    --ink: #2B2326; --muted: #6F6468; --bg: #FBF4F0; --card: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: {{ w }}px; height: {{ h }}px; }
+  body {
+    font-family: Montserrat, sans-serif; color: var(--ink); background: var(--bg);
+    position: relative; overflow: hidden;
+  }
+  em { font-style: italic; color: var(--pink); }
+  .moldura { position: absolute; inset: 36px; border: 2px solid var(--gold-soft); border-radius: 28px; }
+  .bola { position: absolute; border-radius: 50%; background: var(--gold-soft); opacity: .55; }
+  .bola.a { width: 620px; height: 620px; right: -220px; top: -200px; }
+  .bola.b { width: 380px; height: 380px; left: -160px; bottom: -120px; opacity: .35; background: #F6D3E4; }
+
+  .topo { position: absolute; top: 82px; left: 96px; right: 96px; display: flex; justify-content: space-between; align-items: center; }
+  .marca { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--pink); font-weight: 600; }
+  .marca small { display: block; font-family: Montserrat; font-size: 15px; letter-spacing: 4px; color: var(--gold); font-weight: 600; margin-top: 2px; }
+  .contador { font-size: 22px; color: var(--muted); font-weight: 600; letter-spacing: 2px; }
+
+  .conteudo { position: absolute; left: 96px; right: 96px; top: 230px; bottom: 210px; display: flex; flex-direction: column; justify-content: center; }
+  .tag { align-self: flex-start; background: var(--pink); color: #fff; font-weight: 700; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; margin-bottom: 44px; }
+  h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 96px; line-height: 1.06; letter-spacing: -1px; }
+  h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 66px; line-height: 1.12; margin-bottom: 40px; }
+  .sub { font-size: 36px; line-height: 1.45; color: var(--muted); margin-top: 44px; font-weight: 500; }
+  p.texto { font-size: 38px; line-height: 1.5; color: var(--ink); }
+  p.texto + p.texto { margin-top: 28px; }
+  .numero { font-family: 'Playfair Display', serif; font-size: 150px; color: var(--gold); line-height: .9; margin-bottom: 26px; font-weight: 500; }
+
+  .selo { align-self: flex-start; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 110px; padding: 4px 48px 14px; border: 6px solid currentColor; border-radius: 22px; transform: rotate(-4deg); margin-bottom: 56px; }
+  .selo.mito { color: var(--pink); }
+  .selo.verdade { color: var(--gold); }
+  .frase { font-family: 'Playfair Display', serif; font-style: italic; font-size: 58px; line-height: 1.25; margin-bottom: 44px; }
+
+  ul.lista { list-style: none; }
+  ul.lista li { font-size: 38px; line-height: 1.4; padding-left: 70px; position: relative; margin-bottom: 30px; }
+  ul.lista li::before { content: ''; position: absolute; left: 0; top: 8px; width: 40px; height: 40px; border-radius: 50%; background: var(--pink); }
+  ul.lista li::after { content: ''; position: absolute; left: 13px; top: 15px; width: 11px; height: 19px; border: solid #fff; border-width: 0 5px 5px 0; transform: rotate(45deg); }
+
+  .rodape { position: absolute; left: 96px; right: 96px; bottom: 84px; display: flex; justify-content: space-between; align-items: flex-end; font-size: 21px; color: var(--muted); font-weight: 500; }
+  .rodape b { color: var(--ink); font-weight: 600; }
+  .arraste { color: var(--pink); font-weight: 700; letter-spacing: 2px; font-size: 22px; }
+
+  /* Convite: fundo rosa */
+  body.cta { background: var(--pink); color: #fff; }
+  body.cta .bola.a { background: #fff; opacity: .08; }
+  body.cta .bola.b { background: var(--pink-dark); opacity: .6; }
+  body.cta .moldura { border-color: rgba(255,255,255,.35); }
+  body.cta .marca, body.cta .contador, body.cta .rodape, body.cta .rodape b { color: #fff; }
+  body.cta .marca small { color: var(--gold-soft); }
+  body.cta em { color: var(--gold-soft); }
+  body.cta .sub { color: rgba(255,255,255,.9); }
+  .botao { align-self: flex-start; margin-top: 56px; background: #fff; color: var(--pink); font-weight: 700; font-size: 34px; padding: 26px 46px; border-radius: 999px; }
+  .contato { margin-top: 34px; font-size: 28px; line-height: 1.6; color: rgba(255,255,255,.92); }
+
+  /* Story 1080x1920 */
+  body.story .conteudo { top: 320px; bottom: 320px; }
+  body.story h1 { font-size: 104px; }
+  body.story .topo { top: 120px; }
+  body.story .rodape { bottom: 130px; }
+</style>
+</head>
+<body class="{{ 'cta' if s.tipo == 'cta' else '' }} {{ 'story' if story else '' }}">
+  <div class="bola a"></div><div class="bola b"></div>
+  <div class="moldura"></div>
+
+  <div class="topo">
+    <div class="marca">Dra. Manuela Gondim<small>ORTODONTISTA</small></div>
+    {% if total > 1 %}<div class="contador">{{ '%02d' % idx }} / {{ '%02d' % total }}</div>{% endif %}
+  </div>
+
+  <div class="conteudo">
+  {% if s.tipo == 'capa' %}
+    {% if s.tag %}<div class="tag">{{ s.tag }}</div>{% endif %}
+    <h1>{{ s.titulo | enfase }}</h1>
+    {% if s.subtitulo %}<div class="sub">{{ s.subtitulo | enfase }}</div>{% endif %}
+
+  {% elif s.tipo == 'texto' %}
+    {% if s.numero %}<div class="numero">{{ s.numero }}</div>{% endif %}
+    {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}
+    {% for par in (s.texto or '').strip().split('\n\n') %}<p class="texto">{{ par | enfase }}</p>{% endfor %}
+
+  {% elif s.tipo == 'mito' %}
+    <div class="selo {{ 'verdade' if s.veredito|lower == 'verdade' else 'mito' }}">{{ s.veredito | upper }}</div>
+    <div class="frase">“{{ s.frase }}”</div>
+    <p class="texto">{{ s.texto | enfase }}</p>
+
+  {% elif s.tipo == 'lista' %}
+    {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}
+    <ul class="lista">{% for item in s.itens %}<li>{{ item | enfase }}</li>{% endfor %}</ul>
+
+  {% elif s.tipo == 'cta' %}
+    <h1>{{ (s.titulo or 'Seu sorriso merece uma *avaliação*') | enfase }}</h1>
+    {% if s.subtitulo %}<div class="sub">{{ s.subtitulo | enfase }}</div>{% endif %}
+    <div class="botao">{{ s.botao or 'Agende pelo WhatsApp' }}</div>
+    <div class="contato">(81) 99904-9697<br>Olinda Shopping · sala 40</div>
+  {% endif %}
+  </div>
+
+  <div class="rodape">
+    <div><b>Dra. Manuela Gondim</b> · CRO-PE 14.254<br>@dramanuelagondim</div>
+    {% if total > 1 and idx < total %}<div class="arraste">ARRASTE →</div>{% endif %}
+  </div>
+</body>
+</html>

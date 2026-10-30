@@ -1,0 +1,42 @@
+data: 2026-11-03
+hora: "12:00"
+formato: carrossel
+pilar: educa
+status: rascunho
+slides:
+  - tipo: capa
+    tag: Guia rápido
+    titulo: "5 cuidados para quem usa *aparelho*"
+    subtitulo: "Pequenos hábitos que fazem o tratamento render muito mais."
+  - tipo: texto
+    numero: "01"
+    titulo: "Escove depois de *cada* refeição"
+    texto: "Restos de comida grudam nos braquetes com facilidade. Vale ter um kit de escova na bolsa ou no trabalho."
+  - tipo: texto
+    numero: "02"
+    titulo: "Fio dental e escova *interdental*"
+    texto: "Com o aparelho, a escova comum não alcança tudo. O passa-fio e a escovinha interdental são seus melhores amigos."
+  - tipo: texto
+    numero: "03"
+    titulo: "Cuidado com alimentos *duros e grudentos*"
+    texto: "Pipoca, castanhas, caramelo e chiclete podem soltar peças. Prefira cortar alimentos firmes em pedaços pequenos."
+  - tipo: texto
+    numero: "04"
+    titulo: "Não falte às *manutenções*"
+    texto: "É na consulta de manutenção que o tratamento avança. Faltar pode atrasar o resultado."
+  - tipo: texto
+    numero: "05"
+    titulo: "Soltou ou machucou? *Avise*"
+    texto: "Não tente consertar em casa. Fale com o consultório para orientarmos o melhor caminho."
+  - tipo: cta
+    titulo: "Dúvidas sobre o seu *aparelho*?"
+    subtitulo: "Cada caso é único — a avaliação presencial define o melhor cuidado para você."
+legenda: |
+  Usar aparelho é um trabalho em equipe: eu cuido do planejamento e você cuida do dia a dia 😁🦷
+
+  Separei 5 cuidados simples que fazem toda a diferença no resultado do tratamento. Salva esse post para consultar depois e manda para aquele amigo que acabou de colocar aparelho! 💖
+
+  Ficou com alguma dúvida? Me chama no WhatsApp pelo link da bio.
+
+  Dra. Manuela Gondim · Ortodontista · CRO-PE 14.254
+hashtags: [ortodontiaolinda, aparelhodental, dentistaolinda, ortodontista, sorriso, dentistarecife, olinda]
