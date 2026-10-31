@@ -89,7 +89,7 @@ def publicar(pasta: Path, post):
 
 def vencido(post, agora):
     data = str(post["data"])
-    hora = str(post.get("hora", "12:00"))
+    hora = posts.hora(post)
     quando = datetime.fromisoformat(f"{data}T{hora}").replace(tzinfo=RECIFE)
     return quando <= agora
 

@@ -54,7 +54,7 @@ def url_imagem(pasta: Path, img: Path):
 def resumo(pasta: Path, post: dict):
     dias = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"]
     data = datetime.date.fromisoformat(str(post["data"]))
-    quando = f"{dias[data.weekday()]} {data:%d/%m} às {post.get('hora', '12:00')}"
+    quando = f"{dias[data.weekday()]} {data:%d/%m} às {posts.hora(post)}"
     tags = " ".join("#" + t.lstrip("#") for t in post.get("hashtags", []))
     legenda = (post.get("legenda") or "").strip()
     texto = f"📅 {quando} · {post.get('formato')} · {post.get('pilar', '')}\n\n{legenda}\n\n{tags}".strip()
