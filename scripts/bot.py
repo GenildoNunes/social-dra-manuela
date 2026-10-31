@@ -104,6 +104,14 @@ def carregar_estado():
     return json.loads(ESTADO.read_text(encoding="utf-8")) if ESTADO.exists() else {"offset": 0}
 
 
+def confirmar_toque(cb, texto=None):
+    """O aviso rápido do Telegram expira em minutos; como o bot roda a cada 10 min, é só um bônus."""
+    try:
+        tg("answerCallbackQuery", callback_query_id=cb["id"], **({"text": texto} if texto else {}))
+    except RuntimeError:
+        pass
+
+
 def marcar_mensagem(cb, rotulo):
     """Troca os botões da mensagem pelo resultado, para não clicar duas vezes."""
     msg = cb.get("message") or {}
@@ -119,20 +127,20 @@ def tratar_botao(cb):
     pasta = posts.POSTS / nome
     chat = cb["message"]["chat"]["id"]
     if not (pasta / "post.yaml").exists():
-        tg("answerCallbackQuery", callback_query_id=cb["id"], text="Esse post não existe mais.")
+        confirmar_toque(cb, "Esse post não existe mais.")
         return
     post = posts.carregar(pasta)
     if post.get("status") == "publicado":
-        tg("answerCallbackQuery", callback_query_id=cb["id"], text="Esse post já foi publicado.")
+        confirmar_toque(cb, "Esse post já foi publicado.")
         return
 
     if acao == "ok":
         post["status"] = "aprovado"
-        tg("answerCallbackQuery", callback_query_id=cb["id"], text="Aprovado! ✅")
+        confirmar_toque(cb, "Aprovado! ✅")
         marcar_mensagem(cb, ROTULO["aprovado"])
     elif acao == "no":
         post["status"] = "recusado"
-        tg("answerCallbackQuery", callback_query_id=cb["id"], text="Recusado.")
+        confirmar_toque(cb, "Recusado.")
         marcar_mensagem(cb, ROTULO["recusado"])
     elif acao == "aj":
         for outra in posts.todos():  # só um ajuste aguardando por vez
@@ -140,7 +148,7 @@ def tratar_botao(cb):
             if p.pop("aguardando_ajuste", None):
                 posts.salvar(outra, p)
         post["aguardando_ajuste"] = True
-        tg("answerCallbackQuery", callback_query_id=cb["id"])
+        confirmar_toque(cb)
         marcar_mensagem(cb, ROTULO["ajuste"])
         responder(chat, "Me diga o que você quer mudar neste post (título, texto, tom, foto, tema…). "
                         "Pode escrever do seu jeito 💬")
