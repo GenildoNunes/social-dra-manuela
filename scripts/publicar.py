@@ -24,7 +24,8 @@ RAIZ = Path(__file__).resolve().parent.parent
 POSTS = RAIZ / "posts"
 RECIFE = timezone(timedelta(hours=-3))
 
-GRAPH = f"https://graph.instagram.com/{os.environ.get('GRAPH_VERSION', 'v23.0')}"
+# graph.instagram.com (login pelo Instagram) ou graph.facebook.com (usuário do sistema) — definido pelo configurador.
+GRAPH = f"https://{os.environ.get('IG_API_HOST') or 'graph.instagram.com'}/{os.environ.get('GRAPH_VERSION', 'v23.0')}"
 IG_USER_ID = os.environ.get("IG_USER_ID", "")
 TOKEN = os.environ.get("IG_TOKEN", "")
 RAW = os.environ.get("REPO_RAW_URL", "").rstrip("/")

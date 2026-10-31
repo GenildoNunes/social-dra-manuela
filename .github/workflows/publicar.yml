@@ -34,6 +34,7 @@ jobs:
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_API_HOST: ${{ secrets.IG_API_HOST }}
           REPO_RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/main
           DRY_RUN: ${{ inputs.simulacao && '1' || '0' }}
         run: python scripts/publicar.py
