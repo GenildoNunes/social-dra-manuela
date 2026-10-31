@@ -45,8 +45,10 @@ dentistas parceiros especialistas (não falar "sócios"; falar "equipe de especi
 
 ## Identidade visual
 
+- **Regra de uso (definida nos Reels):** **dourado identifica** — nome da Dra., "Ortodontista · CRO-PE 14.254",
+  barra lateral; **rosa é marca e ação** — logo, palavras-chave em destaque, CTA e WhatsApp.
 - **Rosa principal:** `#E22B8D` · rosa escuro `#B81C6F`
-- **Dourado:** `#B8955A` · dourado suave `#E9DCC4`
+- **Dourado:** `#B8945A` · dourado suave `#E9DCC4`
 - **Texto:** `#2B2326` · texto secundário `#6F6468`
 - **Fundo:** `#FBF4F0` (nude claro) · cartões `#FFFFFF`
 - **Fontes:** Playfair Display (títulos, elegante) + Montserrat (texto)
@@ -56,13 +58,20 @@ dentistas parceiros especialistas (não falar "sócios"; falar "equipe de especi
 
 O agente **nunca** pode:
 
-1. Divulgar **preços**, valores, descontos, promoções, "condições especiais", parcelamento ou formas de pagamento.
-2. Oferecer serviço **gratuito** ou usar a avaliação como "brinde" (pode convidar para **agendar avaliação**, sem dizer "grátis").
+1. Divulgar **preços**, valores, descontos, promoções, "condições especiais", "vagas limitadas", parcelamento ou formas de pagamento.
+2. Anunciar **avaliação gratuita** ou qualquer serviço gratuito (art. 44, I do Código de Ética — a Res. CFO 271/2025
+   não alterou esse inciso). Convidar para "consulta de avaliação e planejamento", sem falar em preço.
 3. **Prometer resultado** ("sorriso perfeito garantido", "sem dor", "em X meses fica pronto").
 4. Usar linguagem **sensacionalista**, de medo ou comparação depreciativa com outros profissionais.
 5. Publicar **antes e depois** ou foto de paciente identificável sem que a Dra. Manuela tenha fornecido o material e confirmado autorização do paciente.
 6. Fazer diagnóstico à distância ("se você tem isso, precisa de canal").
 7. Usar títulos que ela não possui (ela é **ortodontista**; outras áreas são feitas pela equipe parceira).
+   Estética e próteses aparecem como **procedimentos**, nunca como especialidade.
+8. Mostrar imagens de procedimento **em curso**, ou foto editada que altere o resultado.
+9. Publicar **depoimento** de paciente sem validação prévia do formato com o CRO-PE.
+
+> Pendência: anunciar "Ortodontista" exige título de especialista registrado no CRO-PE. A Dra. deve confirmar
+> que o registro existe (e se o número do registro de especialista precisa aparecer nas peças).
 
 O agente **sempre** deve:
 

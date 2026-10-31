@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --pink: #E22B8D; --pink-dark: #B81C6F; --gold: #B8955A; --gold-soft: #E9DCC4;
+    --pink: #E22B8D; --pink-dark: #B81C6F; --gold: #B8945A; --gold-soft: #E9DCC4;
     --ink: #2B2326; --muted: #6F6468; --bg: #FBF4F0; --card: #FFFFFF;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,7 +21,9 @@
   .bola.b { width: 380px; height: 380px; left: -160px; bottom: -120px; opacity: .35; background: #F6D3E4; }
 
   .topo { position: absolute; top: 82px; left: 96px; right: 96px; display: flex; justify-content: space-between; align-items: center; }
-  .marca { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--pink); font-weight: 600; }
+  /* Regra da marca: dourado identifica (nome, especialidade, CRO); rosa é marca e ação (destaques, CTA). */
+  .marca { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--gold); font-weight: 600;
+           border-left: 4px solid var(--gold); padding-left: 18px; }
   .marca small { display: block; font-family: Montserrat; font-size: 15px; letter-spacing: 4px; color: var(--gold); font-weight: 600; margin-top: 2px; }
   .contador { font-size: 22px; color: var(--muted); font-weight: 600; letter-spacing: 2px; }
 
@@ -45,7 +47,7 @@
   ul.lista li::after { content: ''; position: absolute; left: 13px; top: 15px; width: 11px; height: 19px; border: solid #fff; border-width: 0 5px 5px 0; transform: rotate(45deg); }
 
   .rodape { position: absolute; left: 96px; right: 96px; bottom: 84px; display: flex; justify-content: space-between; align-items: flex-end; font-size: 21px; color: var(--muted); font-weight: 500; }
-  .rodape b { color: var(--ink); font-weight: 600; }
+  .rodape b { color: var(--gold); font-weight: 600; }
   .arraste { color: var(--pink); font-weight: 700; letter-spacing: 2px; font-size: 22px; }
 
   /* Convite: fundo rosa */
@@ -53,8 +55,8 @@
   body.cta .bola.a { background: #fff; opacity: .08; }
   body.cta .bola.b { background: var(--pink-dark); opacity: .6; }
   body.cta .moldura { border-color: rgba(255,255,255,.35); }
-  body.cta .marca, body.cta .contador, body.cta .rodape, body.cta .rodape b { color: #fff; }
-  body.cta .marca small { color: var(--gold-soft); }
+  body.cta .contador, body.cta .rodape { color: #fff; }
+  body.cta .marca, body.cta .marca small, body.cta .rodape b { color: var(--gold-soft); border-color: var(--gold-soft); }
   body.cta em { color: var(--gold-soft); }
   body.cta .sub { color: rgba(255,255,255,.9); }
   .botao { align-self: flex-start; margin-top: 56px; background: #fff; color: var(--pink); font-weight: 700; font-size: 34px; padding: 26px 46px; border-radius: 999px; }
