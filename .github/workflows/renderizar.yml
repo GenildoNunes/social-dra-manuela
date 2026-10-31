@@ -1,0 +1,40 @@
+name: Renderizar artes
+
+# Gera as imagens de todo post.yaml que ainda não tem slide-*.jpg
+# (posts novos do agente, ou ajustados — o agente apaga as imagens antigas ao ajustar).
+on:
+  push:
+    branches: [main]
+    paths: ["posts/**/post.yaml", "templates/**", "marca/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo
+  cancel-in-progress: false
+
+jobs:
+  renderizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: |
+          pip install jinja2 playwright pyyaml
+          python -m playwright install --with-deps chromium
+
+      - name: Renderizar posts sem imagens
+        run: python scripts/render.py
+
+      - name: Salvar imagens
+        run: |
+          git config user.name "robo-social"
+          git config user.email "robo-social@users.noreply.github.com"
+          git add -A posts
+          git diff --cached --quiet || (git commit -m "Artes renderizadas" && git pull --rebase && git push)
