@@ -1,52 +1,45 @@
 # Configurar a publicação no Instagram (uma vez só)
 
-Tempo: ~15 minutos. Use o Facebook que **administra a Página da clínica** (o mesmo do Business Suite).
+Caminho usado: **API do Instagram com login pelo Instagram** — conecta direto na conta profissional
+@dramanuelagondim, sem depender de Página do Facebook.
 
 ## 1. Criar o app no Meta for Developers
 
-1. Acesse https://developers.facebook.com/apps e clique em **Criar app**.
-   - Se for o primeiro acesso, ele pede para virar desenvolvedor: confirme com o seu Facebook.
-2. Nome do app: `Social Dra Manuela` · e-mail: o seu.
-3. Caso de uso: escolha **Outro** → tipo **Empresa** (Business).
-   - Se pedir um portfólio empresarial, selecione o da clínica (ou "Não quero conectar agora").
-4. No painel do app, em **Adicionar produtos**, adicione **Instagram** e escolha a configuração
-   **com Login do Facebook** (Instagram API with Facebook Login).
+1. https://developers.facebook.com → **Meus apps** → **Criar app** (logado no Facebook da Manuela).
+2. Nome: `Social Dra Manuela`.
+3. Caso de uso: filtro **Gerenciamento de conteúdo** → **Gerenciar mensagens e conteúdo no Instagram**.
+4. Empresa: **Não quero conectar um portfólio empresarial agora**.
+5. Avançar até **Criar app**.
 
-> O app fica em **modo de desenvolvimento** — é o suficiente, porque só a conta da própria
-> clínica vai usá-lo. Não precisa passar por revisão do Meta.
+> O app fica em **modo de desenvolvimento** — suficiente, porque só a própria conta vai usá-lo.
 
-## 2. Anotar App ID e Chave Secreta
+## 2. Gerar o token do Instagram
 
-**Configurações do app → Básico**: copie o **ID do app** e clique em **Mostrar** na **Chave Secreta**.
-Não envie essas informações a ninguém (nem no chat) — você vai colar direto no terminal no passo 4.
+1. No painel do app: **Casos de uso → Gerenciar mensagens e conteúdo no Instagram → Personalizar**
+   → **Configuração da API com login do Instagram**.
+2. Em **Gerar tokens de acesso**, clique em **Adicionar conta** e entre com o **Instagram @dramanuelagondim**.
+   Autorize as permissões (é a Dra. Manuela/vocês quem decide e confirma).
+3. Ao lado da conta adicionada, clique em **Gerar token** e copie (não envie a ninguém).
 
-## 3. Gerar o token no Graph API Explorer
+## 3. Token do GitHub para a renovação automática (opcional, recomendado)
 
-1. Abra https://developers.facebook.com/tools/explorer
-2. No canto direito, em **Aplicativo da Meta**, selecione `Social Dra Manuela`.
-3. Em **Usuário ou Página**, escolha **Obter token de acesso do usuário**.
-4. Em **Permissões**, adicione:
-   - `pages_show_list`
-   - `pages_read_engagement`
-   - `instagram_basic`
-   - `instagram_content_publish`
-   - `business_management`
-5. Clique em **Generate Access Token**. Na janela do Facebook, **marque a Página da clínica e o
-   Instagram @dramanuelagondim** e confirme.
-6. Copie o token gerado (começa com `EAA...`).
+O token do Instagram vale 60 dias; o robô renova toda segunda — para isso ele precisa de permissão
+para atualizar o segredo:
+
+1. https://github.com/settings/personal-access-tokens/new
+2. Nome `renovar-token-instagram` · Expiração: a maior possível.
+3. **Repository access → Only select repositories → social-dra-manuela**.
+4. **Permissions → Repository permissions → Secrets: Read and write**.
+5. **Generate token** e copie.
 
 ## 4. Rodar o configurador
-
-No terminal, dentro da pasta do projeto:
 
 ```
 python scripts/configurar_meta.py
 ```
 
-Cole o App ID, a Chave Secreta e o token quando pedir (eles não aparecem na tela).
-O script troca por um token **sem validade**, descobre o ID do Instagram e salva tudo como
-segredo no GitHub. Ao final deve aparecer `✓ Segredos IG_TOKEN e IG_USER_ID salvos no GitHub`.
+Cole o token do Instagram e, em seguida, o token do GitHub. Nada aparece na tela nem fica salvo no PC.
 
 ## 5. Testar
 
-No GitHub: **Actions → Publicar no Instagram → Run workflow** (deixe "Só simular" marcado).
+GitHub → **Actions → Publicar no Instagram → Run workflow** (deixe "Só simular" marcado).

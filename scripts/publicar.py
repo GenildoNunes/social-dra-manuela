@@ -1,8 +1,10 @@
 """Publica no Instagram os posts com status `aprovado` cuja data/hora já chegou.
 
+Usa a API do Instagram com login pelo Instagram (graph.instagram.com) — não depende de Página do Facebook.
+
 Roda no GitHub Actions (ver .github/workflows/publicar.yml). Variáveis de ambiente:
     IG_USER_ID      ID da conta profissional do Instagram
-    IG_TOKEN        Token de acesso da Página do Facebook vinculada
+    IG_TOKEN        Token de acesso do Instagram (renovado por renovar_token.py)
     REPO_RAW_URL    Base pública das imagens, ex.: https://raw.githubusercontent.com/<dono>/<repo>/main
     GRAPH_VERSION   (opcional) versão da Graph API
     DRY_RUN=1       (opcional) só mostra o que faria, sem publicar
@@ -22,7 +24,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 POSTS = RAIZ / "posts"
 RECIFE = timezone(timedelta(hours=-3))
 
-GRAPH = f"https://graph.facebook.com/{os.environ.get('GRAPH_VERSION', 'v23.0')}"
+GRAPH = f"https://graph.instagram.com/{os.environ.get('GRAPH_VERSION', 'v23.0')}"
 IG_USER_ID = os.environ.get("IG_USER_ID", "")
 TOKEN = os.environ.get("IG_TOKEN", "")
 RAW = os.environ.get("REPO_RAW_URL", "").rstrip("/")

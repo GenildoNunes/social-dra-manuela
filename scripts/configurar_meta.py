@@ -1,8 +1,9 @@
 """Configura o acesso ao Instagram e salva nos segredos do GitHub (rodar uma vez, no seu PC).
 
-Pede o App ID, a Chave Secreta do app e o token curto gerado no Graph API Explorer.
-Troca por um token de Página que não expira, descobre o ID do Instagram e grava
-IG_TOKEN e IG_USER_ID como segredos do repositório. Nenhum token é exibido ou salvo em disco.
+Pede o token gerado no painel do app (Instagram → Configuração da API com login do Instagram),
+confere que ele é da conta certa e grava IG_TOKEN e IG_USER_ID como segredos do repositório.
+Opcionalmente grava também GH_PAT, usado pelo robô para renovar o token sozinho.
+Nenhum token é exibido ou salvo em disco.
 
 Uso:  python scripts/configurar_meta.py
 """
@@ -14,16 +15,9 @@ import sys
 
 import requests
 
-GRAPH = f"https://graph.facebook.com/{os.environ.get('GRAPH_VERSION', 'v23.0')}"
+GRAPH = f"https://graph.instagram.com/{os.environ.get('GRAPH_VERSION', 'v23.0')}"
 REPO = "GenildoNunes/social-dra-manuela"
 INSTAGRAM = "dramanuelagondim"
-
-
-def get(caminho, **params):
-    dados = requests.get(f"{GRAPH}/{caminho}", params=params, timeout=30).json()
-    if "error" in dados:
-        sys.exit(f"Erro do Meta: {dados['error'].get('message')}")
-    return dados
 
 
 def gh_exe():
@@ -35,36 +29,34 @@ def gh_exe():
     sys.exit("GitHub CLI (gh) não encontrado.")
 
 
+def salvar_segredo(gh, nome, valor):
+    subprocess.run([gh, "secret", "set", nome, "-R", REPO], input=valor, text=True, check=True)
+
+
 def main():
     print("== Configuração do Instagram ==\n(o que você colar não aparece na tela)\n")
-    app_id = input("App ID: ").strip()
-    app_secret = getpass.getpass("Chave Secreta do app: ").strip()
-    token_curto = getpass.getpass("Token do Graph API Explorer: ").strip()
+    token = getpass.getpass("Token do Instagram (painel do app): ").strip()
 
-    longo = get("oauth/access_token", grant_type="fb_exchange_token", client_id=app_id,
-                client_secret=app_secret, fb_exchange_token=token_curto)["access_token"]
-
-    paginas = get("me/accounts", access_token=longo,
-                  fields="name,access_token,instagram_business_account{id,username}")["data"]
-    escolhida = next((p for p in paginas
-                      if p.get("instagram_business_account", {}).get("username") == INSTAGRAM), None)
-    if not escolhida:
-        nomes = ", ".join(p["name"] for p in paginas) or "nenhuma"
-        sys.exit(f"Não achei a Página vinculada ao @{INSTAGRAM}. Páginas liberadas: {nomes}.\n"
-                 "Gere o token de novo marcando a Página da clínica na autorização.")
-
-    ig_id = escolhida["instagram_business_account"]["id"]
-    token_pagina = escolhida["access_token"]
-
-    validade = get("debug_token", input_token=token_pagina,
-                   access_token=f"{app_id}|{app_secret}")["data"].get("expires_at", 0)
-    print(f"\n✓ Página: {escolhida['name']}  ·  Instagram: @{INSTAGRAM} ({ig_id})")
-    print("✓ Token sem validade" if validade == 0 else "⚠ Token com validade — refaça daqui a ~60 dias")
+    dados = requests.get(f"{GRAPH}/me", params={"fields": "user_id,username", "access_token": token},
+                         timeout=30).json()
+    if "error" in dados:
+        sys.exit(f"Erro do Meta: {dados['error'].get('message')}")
+    if dados.get("username") != INSTAGRAM:
+        sys.exit(f"Esse token é da conta @{dados.get('username')}, não da @{INSTAGRAM}. Nada foi salvo.")
+    print(f"✓ Conta confirmada: @{INSTAGRAM} ({dados['user_id']})")
 
     gh = gh_exe()
-    for nome, valor in (("IG_TOKEN", token_pagina), ("IG_USER_ID", ig_id)):
-        subprocess.run([gh, "secret", "set", nome, "-R", REPO], input=valor, text=True, check=True)
-    print("\n✓ Segredos IG_TOKEN e IG_USER_ID salvos no GitHub. Pronto!")
+    salvar_segredo(gh, "IG_TOKEN", token)
+    salvar_segredo(gh, "IG_USER_ID", str(dados["user_id"]))
+    print("✓ Segredos IG_TOKEN e IG_USER_ID salvos no GitHub.")
+
+    print("\nRenovação automática: cole o token do GitHub (fine-grained, permissão Secrets: leitura e escrita).")
+    pat = getpass.getpass("Token do GitHub (Enter para pular): ").strip()
+    if pat:
+        salvar_segredo(gh, "GH_PAT", pat)
+        print("✓ GH_PAT salvo — o robô vai renovar o token do Instagram toda semana.")
+    else:
+        print("⚠ Sem GH_PAT o token do Instagram vence em ~60 dias. Rode este script de novo para configurar.")
 
 
 if __name__ == "__main__":
