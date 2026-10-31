@@ -20,6 +20,8 @@ from pathlib import Path
 import requests
 import yaml
 
+import posts
+
 RAIZ = Path(__file__).resolve().parent.parent
 POSTS = RAIZ / "posts"
 RECIFE = timezone(timedelta(hours=-3))
@@ -123,7 +125,7 @@ def main():
         post["status"] = "publicado"
         post["publicado_em"] = agora.isoformat(timespec="minutes")
         post["ig_media_id"] = media_id
-        arq.write_text(yaml.safe_dump(post, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        posts.salvar(arq.parent, post)
         print(f"  ✓ publicado ({media_id})")
 
     return 1 if falhas else 0

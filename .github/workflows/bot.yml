@@ -1,0 +1,59 @@
+name: Bot do Telegram
+
+on:
+  schedule:
+    # A cada 10 minutos, das 7h à meia-noite de Recife (UTC-3). O GitHub pode atrasar alguns minutos.
+    - cron: "*/10 0-2,10-23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Mesmo grupo do publicador: os dois gravam no repositório, então rodam um de cada vez.
+concurrency:
+  group: repo
+  cancel-in-progress: false
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_IDS: ${{ secrets.TELEGRAM_CHAT_IDS }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      REPO_RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/main
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml requests anthropic
+
+      - name: Ler respostas da Dra.
+        run: python scripts/bot.py processar
+
+      - name: Refazer artes ajustadas
+        if: hashFiles('.precisa_render') != ''
+        run: |
+          pip install jinja2 playwright
+          python -m playwright install --with-deps chromium
+          python scripts/render.py $(sed 's|^|posts/|' .precisa_render | sort -u)
+          rm .precisa_render
+
+      - name: Salvar (antes de enviar, para as imagens já estarem públicas)
+        run: |
+          git config user.name "robo-social"
+          git config user.email "robo-social@users.noreply.github.com"
+          git add -A posts estado
+          git diff --cached --quiet || (git commit -m "Bot: respostas da Dra." && git pull --rebase && git push)
+
+      - name: Enviar rascunhos para aprovação
+        run: python scripts/bot.py enviar
+
+      - name: Registrar envios
+        if: always()
+        run: |
+          git add -A posts estado
+          git diff --cached --quiet || (git commit -m "Bot: posts enviados para aprovação" && git pull --rebase && git push)

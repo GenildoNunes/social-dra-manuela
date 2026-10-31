@@ -41,6 +41,13 @@ python scripts/render.py
 Confira visualmente algumas imagens geradas (texto não pode transbordar). Se transbordar, encurte o
 texto e renderize de novo aquele post.
 
+## Aprovação pelo Telegram
+
+O bot (`scripts/bot.py`, workflow `bot.yml`) manda cada rascunho para a Dra. com ✅ / ✏️ / ❌.
+- Posts com `pedidos_ajuste` e ainda em `rascunho` precisam ser refeitos: aplique o último pedido,
+  renderize de novo e apague o campo `telegram_msg` para o bot reenviar.
+- Não mexa em `telegram_msg` de outros posts nem em `estado/telegram.json`.
+
 ## Nunca
 
 - Mudar `status` de um post para `aprovado` — só a Dra. Manuela aprova.
