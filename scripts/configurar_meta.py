@@ -9,6 +9,7 @@ Uso:  python scripts/configurar_meta.py
 """
 import getpass
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -52,16 +53,45 @@ def identificar_conta(token):
         "fields": "instagram_accounts{id,username}", "access_token": token}).json()
     for conta in r.get("instagram_accounts", {}).get("data", []):
         return "graph.facebook.com", conta["id"], conta.get("username")
-    sys.exit(f"Não consegui identificar a conta do Instagram com esse token: {r.get('error', r)}")
+    erro = r.get("error", {})
+    # Nunca imprimir a mensagem crua: a Meta às vezes repete o token dentro dela.
+    sys.exit(f"Não consegui identificar a conta do Instagram com esse token "
+             f"(erro {erro.get('code')}: {erro.get('type')}). Gere um token novo e tente de novo.")
 
 
 def salvar_segredo(gh, nome, valor):
     subprocess.run([gh, "secret", "set", nome, "-R", REPO], input=valor, text=True, check=True)
 
 
+def ler_area_de_transferencia():
+    r = subprocess.run(["powershell", "-NoProfile", "-Command", "Get-Clipboard -Raw"],
+                       capture_output=True, text=True)
+    return r.stdout
+
+
+def limpar_area_de_transferencia():
+    subprocess.run(["powershell", "-NoProfile", "-Command", "Set-Clipboard -Value ' '"], capture_output=True)
+
+
+def extrair_token(texto):
+    """Pega o primeiro token do texto copiado (tolera espaços, quebras de linha e colagem duplicada)."""
+    texto = re.sub(r"\s+", "", texto or "")
+    for n in (2, 3):
+        parte = len(texto) // n
+        if len(texto) % n == 0 and texto == texto[:parte] * n:
+            return texto[:parte]
+    return texto
+
+
 def main():
-    print("== Configuração do Instagram ==\n(o que você colar não aparece na tela)\n")
-    token = getpass.getpass("Token do Instagram (painel do app): ").strip()
+    print("== Configuração do Instagram ==\n")
+    print("1. No Chrome, clique em 'Gerar token' e COPIE o token.")
+    input("2. Volte aqui e aperte Enter (não precisa colar nada)... ")
+    token = extrair_token(ler_area_de_transferencia())
+    if not token.startswith(("EAA", "IG")):
+        sys.exit("A área de transferência não tem um token. Copie o token no Chrome e rode de novo.")
+    limpar_area_de_transferencia()
+    print(f"Token lido ({len(token)} caracteres, terminando em ...{token[-4:]}). Verificando...")
 
     host, ig_id, username = identificar_conta(token)
     if username != INSTAGRAM:
