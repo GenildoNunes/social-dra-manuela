@@ -20,8 +20,11 @@ Crie os posts da **próxima semana (segunda a sexta)**:
 - Pelo menos 1 post na semana termina com slide `cta`.
 
 Cada post vive em `posts/AAAA-MM-DD-slug-curto/post.yaml`. Veja os exemplos existentes para o
-formato. Tipos de slide disponíveis: `capa`, `texto`, `mito`, `lista`, `cta`.
-Use `*palavra*` para destacar em rosa itálico. Mantenha os textos curtos — cabem ~35 palavras por slide.
+formato. Tipos de slide disponíveis: `capa`, `texto`, `mito`, `lista`, `foto`, `cta`.
+- `capa` aceita `foto: <arquivo>` (de `marca/fotos/`), mostrada em arco ao lado do título.
+- `foto` usa a foto de fundo inteira, com `titulo` e `texto` curtos embaixo.
+Use `*palavra*` para destacar uma ou duas palavras em cursiva (não frases longas).
+Mantenha os textos curtos — cabem ~35 palavras por slide. Varie as fotos entre os posts.
 
 Sempre crie com `status: rascunho`. Marque `revisar: true` em qualquer post com afirmação clínica
 que mereça conferência da Dra. Manuela.

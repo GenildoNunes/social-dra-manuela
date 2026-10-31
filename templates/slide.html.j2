@@ -2,87 +2,119 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lora:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
 <style>
+  /* Identidade das artes recentes: nude/rosé, bronze, serifa elegante + cursiva nos destaques. */
   :root {
-    --pink: #E22B8D; --pink-dark: #B81C6F; --gold: #B8945A; --gold-soft: #E9DCC4;
-    --ink: #2B2326; --muted: #6F6468; --bg: #FBF4F0; --card: #FFFFFF;
+    --nude: #FBF3EF; --nude-2: #F3E2DA; --nude-3: #EBD3C9; --pill: #F2DED6;
+    --rosewood: #7A3E45; --texto: #6B4A4A; --mauve: #B8656F;
+    --bronze: #B07A52; --bronze-claro: #D8AE86;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: {{ w }}px; height: {{ h }}px; }
   body {
-    font-family: Montserrat, sans-serif; color: var(--ink); background: var(--bg);
-    position: relative; overflow: hidden;
+    font-family: Lora, Georgia, serif; color: var(--texto); position: relative; overflow: hidden;
+    background: linear-gradient(160deg, var(--nude) 0%, var(--nude-2) 55%, var(--nude-3) 100%);
   }
-  em { font-style: italic; color: var(--pink); }
-  .moldura { position: absolute; inset: 36px; border: 2px solid var(--gold-soft); border-radius: 28px; }
-  .bola { position: absolute; border-radius: 50%; background: var(--gold-soft); opacity: .55; }
-  .bola.a { width: 620px; height: 620px; right: -220px; top: -200px; }
-  .bola.b { width: 380px; height: 380px; left: -160px; bottom: -120px; opacity: .35; background: #F6D3E4; }
+  em { font-family: 'Great Vibes', cursive; font-style: normal; font-weight: 400; color: var(--mauve);
+       font-size: 1.35em; line-height: .8; letter-spacing: 0; }
+  b { color: var(--rosewood); font-weight: 600; }
 
-  .topo { position: absolute; top: 82px; left: 96px; right: 96px; display: flex; justify-content: space-between; align-items: center; }
-  /* Regra da marca: dourado identifica (nome, especialidade, CRO); rosa é marca e ação (destaques, CTA). */
-  .marca { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--gold); font-weight: 600;
-           border-left: 4px solid var(--gold); padding-left: 18px; }
-  .marca small { display: block; font-family: Montserrat; font-size: 15px; letter-spacing: 4px; color: var(--gold); font-weight: 600; margin-top: 2px; }
-  .contador { font-size: 22px; color: var(--muted); font-weight: 600; letter-spacing: 2px; }
+  .ondas { position: absolute; inset: 0; pointer-events: none; }
+  .logo { position: absolute; top: 76px; left: 50%; transform: translateX(-50%); width: 400px; height: 137px;
+          -webkit-mask: url({{ logo }}) center / contain no-repeat;
+          background: linear-gradient(120deg, var(--bronze) 0%, var(--bronze-claro) 50%, var(--bronze) 100%); }
+  .contador { position: absolute; top: 96px; right: 90px; font: 600 20px Montserrat, sans-serif; letter-spacing: 3px; color: var(--bronze); }
 
-  .conteudo { position: absolute; left: 96px; right: 96px; top: 230px; bottom: 210px; display: flex; flex-direction: column; justify-content: center; }
-  .tag { align-self: flex-start; background: var(--pink); color: #fff; font-weight: 700; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; margin-bottom: 44px; }
-  h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 96px; line-height: 1.06; letter-spacing: -1px; }
-  h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 66px; line-height: 1.12; margin-bottom: 40px; }
-  .sub { font-size: 36px; line-height: 1.45; color: var(--muted); margin-top: 44px; font-weight: 500; }
-  p.texto { font-size: 38px; line-height: 1.5; color: var(--ink); }
-  p.texto + p.texto { margin-top: 28px; }
-  .numero { font-family: 'Playfair Display', serif; font-size: 150px; color: var(--gold); line-height: .9; margin-bottom: 26px; font-weight: 500; }
+  .conteudo { position: absolute; left: 100px; right: 100px; top: 270px; bottom: 200px;
+              display: flex; flex-direction: column; justify-content: center; }
+  .tag { align-self: flex-start; background: var(--pill); color: var(--rosewood);
+         font: 600 22px 'Cormorant Garamond', serif; letter-spacing: 5px; text-transform: uppercase;
+         padding: 12px 30px; border-radius: 0 999px 999px 0; margin-bottom: 40px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 104px; line-height: 1.02; color: var(--rosewood); }
+  h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 72px; line-height: 1.08; color: var(--rosewood); margin-bottom: 34px; }
+  .fio { width: 120px; height: 2px; background: linear-gradient(90deg, var(--bronze), var(--bronze-claro)); margin: 36px 0; }
+  .sub { font-size: 36px; line-height: 1.45; color: var(--texto); }
+  p.texto { font-size: 36px; line-height: 1.5; }
+  p.texto + p.texto { margin-top: 26px; }
+  .numero { font-family: 'Cormorant Garamond', serif; font-size: 130px; line-height: .9; color: var(--bronze); font-weight: 500; margin-bottom: 18px; }
 
-  .selo { align-self: flex-start; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 110px; padding: 4px 48px 14px; border: 6px solid currentColor; border-radius: 22px; transform: rotate(-4deg); margin-bottom: 56px; }
-  .selo.mito { color: var(--pink); }
-  .selo.verdade { color: var(--gold); }
-  .frase { font-family: 'Playfair Display', serif; font-style: italic; font-size: 58px; line-height: 1.25; margin-bottom: 44px; }
+  .selo { align-self: flex-start; font: 700 64px 'Cormorant Garamond', serif; letter-spacing: 12px; text-transform: uppercase;
+          padding: 10px 40px 10px 52px; border-radius: 0 999px 999px 0; margin-bottom: 44px; color: var(--nude); }
+  .selo.mito { background: var(--rosewood); }
+  .selo.verdade { background: linear-gradient(120deg, var(--bronze), var(--bronze-claro)); }
+  .frase { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 60px; line-height: 1.15; color: var(--rosewood); }
 
   ul.lista { list-style: none; }
-  ul.lista li { font-size: 38px; line-height: 1.4; padding-left: 70px; position: relative; margin-bottom: 30px; }
-  ul.lista li::before { content: ''; position: absolute; left: 0; top: 8px; width: 40px; height: 40px; border-radius: 50%; background: var(--pink); }
-  ul.lista li::after { content: ''; position: absolute; left: 13px; top: 15px; width: 11px; height: 19px; border: solid #fff; border-width: 0 5px 5px 0; transform: rotate(45deg); }
+  ul.lista li { font-size: 36px; line-height: 1.35; display: flex; align-items: center; gap: 30px; padding: 20px 0;
+                border-bottom: 1px solid rgba(176, 122, 82, .3); }
+  ul.lista li:last-child { border-bottom: none; }
+  ul.lista li::before { content: ''; flex: none; width: 64px; height: 64px; border-radius: 50%; background: var(--pill);
+                        box-shadow: inset 0 0 0 2px rgba(176,122,82,.35); }
+  .icone { position: relative; }
+  .icone i { position: absolute; left: 16px; top: 50%; width: 32px; height: 30px; margin-top: -15px;
+             -webkit-mask: url({{ simbolo }}) center / contain no-repeat; background: var(--bronze); }
 
-  .rodape { position: absolute; left: 96px; right: 96px; bottom: 84px; display: flex; justify-content: space-between; align-items: flex-end; font-size: 21px; color: var(--muted); font-weight: 500; }
-  .rodape b { color: var(--gold); font-weight: 600; }
-  .arraste { color: var(--pink); font-weight: 700; letter-spacing: 2px; font-size: 22px; }
+  .rodape { position: absolute; left: 100px; right: 100px; bottom: 78px; display: flex; justify-content: space-between; align-items: flex-end;
+            font: 500 20px Montserrat, sans-serif; letter-spacing: 1px; color: var(--texto); padding-top: 22px;
+            border-top: 1px solid rgba(176, 122, 82, .45); }
+  .arraste { font-family: 'Great Vibes', cursive; font-size: 44px; color: var(--mauve); line-height: .6; }
 
-  /* Convite: fundo rosa */
-  body.cta { background: var(--pink); color: #fff; }
-  body.cta .bola.a { background: #fff; opacity: .08; }
-  body.cta .bola.b { background: var(--pink-dark); opacity: .6; }
-  body.cta .moldura { border-color: rgba(255,255,255,.35); }
-  body.cta .contador, body.cta .rodape { color: #fff; }
-  body.cta .marca, body.cta .marca small, body.cta .rodape b { color: var(--gold-soft); border-color: var(--gold-soft); }
-  body.cta em { color: var(--gold-soft); }
-  body.cta .sub { color: rgba(255,255,255,.9); }
-  .botao { align-self: flex-start; margin-top: 56px; background: #fff; color: var(--pink); font-weight: 700; font-size: 34px; padding: 26px 46px; border-radius: 999px; }
-  .contato { margin-top: 34px; font-size: 28px; line-height: 1.6; color: rgba(255,255,255,.92); }
+  /* Convite: fundo rosewood */
+  body.cta { background: linear-gradient(160deg, #8A4A50 0%, var(--rosewood) 60%, #5E2E34 100%); color: var(--nude); }
+  body.cta h1, body.cta .sub, body.cta .rodape, body.cta .contato { color: var(--nude); }
+  body.cta em { color: #F2C9C4; }
+  body.cta .logo { background: linear-gradient(120deg, var(--bronze-claro), #F1D6B8, var(--bronze-claro)); }
+  body.cta .rodape { border-color: rgba(216, 174, 134, .5); }
+  .botao { align-self: flex-start; margin-top: 50px; background: var(--nude); color: var(--rosewood);
+           font: 600 32px Montserrat, sans-serif; padding: 26px 50px; border-radius: 999px; }
+  .contato { margin-top: 32px; font-size: 28px; line-height: 1.6; }
+  .assinatura { font-family: 'Great Vibes', cursive; font-size: 54px; color: #F2C9C4; margin-top: 40px; }
+
+  /* Foto do consultório em arco (capa) ou de fundo (slide foto) */
+  .arco { position: absolute; right: -40px; top: 300px; width: 470px; height: 640px; border-radius: 235px 235px 0 0; overflow: hidden;
+          box-shadow: 0 0 0 10px rgba(251,243,239,.7), 0 0 0 12px rgba(176,122,82,.5); }
+  .arco img, .fundo img { width: 100%; height: 100%; object-fit: cover; }
+  body.com-arco .conteudo { right: 470px; }
+  body.com-arco h1 { font-size: 88px; }
+  .fundo { position: absolute; inset: 0; }
+  .fundo::after { content: ''; position: absolute; inset: 0;
+                  background: linear-gradient(180deg, rgba(251,243,239,.92) 0%, rgba(251,243,239,.25) 30%, rgba(94,46,52,.15) 55%, rgba(94,46,52,.88) 100%); }
+  body.foto .conteudo { top: auto; bottom: 190px; justify-content: flex-end; }
+  body.foto h2, body.foto p.texto, body.foto .rodape { color: var(--nude); }
+  body.foto em { color: #F2C9C4; }
+  body.foto .rodape { border-color: rgba(251,243,239,.5); }
 
   /* Story 1080x1920 */
-  body.story .conteudo { top: 320px; bottom: 320px; }
-  body.story h1 { font-size: 104px; }
-  body.story .topo { top: 120px; }
-  body.story .rodape { bottom: 130px; }
+  body.story .logo { top: 150px; }
+  body.story .conteudo { top: 380px; bottom: 300px; }
+  body.story h1 { font-size: 112px; }
+  body.story .rodape { bottom: 140px; }
 </style>
 </head>
-<body class="{{ 'cta' if s.tipo == 'cta' else '' }} {{ 'story' if story else '' }}">
-  <div class="bola a"></div><div class="bola b"></div>
-  <div class="moldura"></div>
+{% set tem_arco = s.tipo == 'capa' and s.foto %}
+<body class="{{ 'cta' if s.tipo == 'cta' }} {{ 'foto' if s.tipo == 'foto' }} {{ 'com-arco' if tem_arco }} {{ 'story' if story }}">
+  {% if s.tipo == 'foto' %}<div class="fundo"><img src="{{ s.foto | foto }}"></div>{% endif %}
 
-  <div class="topo">
-    <div class="marca">Dra. Manuela Gondim<small>ORTODONTISTA</small></div>
-    {% if total > 1 %}<div class="contador">{{ '%02d' % idx }} / {{ '%02d' % total }}</div>{% endif %}
-  </div>
+  {% if s.tipo not in ('cta', 'foto') %}
+  <svg class="ondas" viewBox="0 0 {{ w }} {{ h }}" preserveAspectRatio="none">
+    <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#B07A52"/><stop offset=".5" stop-color="#D8AE86"/><stop offset="1" stop-color="#B07A52"/></linearGradient></defs>
+    <path d="M0 {{ h*0.86 }} C {{ w*0.3 }} {{ h*0.78 }}, {{ w*0.55 }} {{ h*0.97 }}, {{ w }} {{ h*0.84 }} L {{ w }} {{ h }} L 0 {{ h }} Z" fill="#EBD3C9" opacity=".55"/>
+    <path d="M{{ w*0.55 }} 0 C {{ w*0.75 }} {{ h*0.08 }}, {{ w*0.85 }} {{ h*0.02 }}, {{ w }} {{ h*0.12 }} L {{ w }} 0 Z" fill="#EBD3C9" opacity=".6"/>
+    <path d="M-20 {{ h*0.83 }} C {{ w*0.3 }} {{ h*0.75 }}, {{ w*0.6 }} {{ h*0.95 }}, {{ w+20 }} {{ h*0.8 }}" fill="none" stroke="url(#g)" stroke-width="2"/>
+    <path d="M{{ w*0.35 }} -10 C {{ w*0.55 }} {{ h*0.1 }}, {{ w*0.8 }} {{ h*0.02 }}, {{ w+20 }} {{ h*0.16 }}" fill="none" stroke="url(#g)" stroke-width="1.5"/>
+  </svg>
+  {% endif %}
+
+  {% if s.tipo != 'foto' %}<div class="logo"></div>{% endif %}
+  {% if total > 1 %}<div class="contador">{{ '%02d' % idx }} / {{ '%02d' % total }}</div>{% endif %}
+  {% if tem_arco %}<div class="arco"><img src="{{ s.foto | foto }}"></div>{% endif %}
 
   <div class="conteudo">
   {% if s.tipo == 'capa' %}
     {% if s.tag %}<div class="tag">{{ s.tag }}</div>{% endif %}
     <h1>{{ s.titulo | enfase }}</h1>
-    {% if s.subtitulo %}<div class="sub">{{ s.subtitulo | enfase }}</div>{% endif %}
+    {% if s.subtitulo %}<div class="fio"></div><div class="sub">{{ s.subtitulo | enfase }}</div>{% endif %}
 
   {% elif s.tipo == 'texto' %}
     {% if s.numero %}<div class="numero">{{ s.numero }}</div>{% endif %}
@@ -90,25 +122,31 @@
     {% for par in (s.texto or '').strip().split('\n\n') %}<p class="texto">{{ par | enfase }}</p>{% endfor %}
 
   {% elif s.tipo == 'mito' %}
-    <div class="selo {{ 'verdade' if s.veredito|lower == 'verdade' else 'mito' }}">{{ s.veredito | upper }}</div>
+    <div class="selo {{ 'verdade' if s.veredito|lower == 'verdade' else 'mito' }}">{{ s.veredito }}</div>
     <div class="frase">“{{ s.frase }}”</div>
+    <div class="fio"></div>
     <p class="texto">{{ s.texto | enfase }}</p>
 
   {% elif s.tipo == 'lista' %}
     {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}
-    <ul class="lista">{% for item in s.itens %}<li>{{ item | enfase }}</li>{% endfor %}</ul>
+    <ul class="lista">{% for item in s.itens %}<li class="icone"><i></i>{{ item | enfase }}</li>{% endfor %}</ul>
+
+  {% elif s.tipo == 'foto' %}
+    {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}
+    {% if s.texto %}<p class="texto">{{ s.texto | enfase }}</p>{% endif %}
 
   {% elif s.tipo == 'cta' %}
     <h1>{{ (s.titulo or 'Seu sorriso merece uma *avaliação*') | enfase }}</h1>
-    {% if s.subtitulo %}<div class="sub">{{ s.subtitulo | enfase }}</div>{% endif %}
+    {% if s.subtitulo %}<div class="fio"></div><div class="sub">{{ s.subtitulo | enfase }}</div>{% endif %}
     <div class="botao">{{ s.botao or 'Agende pelo WhatsApp' }}</div>
-    <div class="contato">(81) 99904-9697<br>Olinda Shopping · sala 40</div>
+    <div class="contato">(81) 99904-9697 · Olinda Shopping, sala 40</div>
+    <div class="assinatura">Cada sorriso tem a sua história</div>
   {% endif %}
   </div>
 
   <div class="rodape">
-    <div><b>Dra. Manuela Gondim</b> · CRO-PE 14.254<br>@dramanuelagondim</div>
-    {% if total > 1 and idx < total %}<div class="arraste">ARRASTE →</div>{% endif %}
+    <div>Dra. Manuela Gondim · CRO-PE 14.254 · @dramanuelagondim</div>
+    {% if total > 1 and idx < total %}<div class="arraste">arraste</div>{% endif %}
   </div>
 </body>
 </html>

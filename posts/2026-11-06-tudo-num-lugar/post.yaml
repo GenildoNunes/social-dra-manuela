@@ -7,7 +7,8 @@ slides:
   - tipo: capa
     tag: Cuidado completo
     titulo: "Seu sorriso inteiro, em *um só lugar*"
-    subtitulo: "Do aparelho ao implante: avaliação completa e equipe de especialistas parceiros."
+    subtitulo: "Do aparelho ao implante, com equipe de especialistas parceiros."
+    foto: consultorio-amplo.jpg
   - tipo: lista
     titulo: "O que cuidamos *aqui*"
     itens:
@@ -20,9 +21,13 @@ slides:
   - tipo: texto
     titulo: "Como *funciona*"
     texto: "Na avaliação, eu olho o seu sorriso como um todo e monto o plano de tratamento com você.\n\nQuando o caso pede outra especialidade, você é atendido pela nossa equipe de especialistas parceiros — no mesmo consultório."
+  - tipo: foto
+    foto: parede-logo-mg.jpg
+    titulo: "Um espaço pensado para *você*"
+    texto: "Cada detalhe do consultório foi feito para você se sentir em casa."
   - tipo: cta
     titulo: "Comece pela *avaliação*"
-    subtitulo: "Olinda Shopping, sala 40 — pertinho de você."
+    subtitulo: "Agende sua consulta de avaliação e planejamento."
 legenda: |
   Sabe aquela correria de ir num dentista para cada coisa? Aqui não precisa 💖
 
@@ -31,5 +36,5 @@ legenda: |
   📍 Olinda Shopping, sala 40 — Bairro Novo, Olinda
   📲 Agende pelo WhatsApp no link da bio
 
-  Dra. Manuela Gondim · Ortodontista · CRO-PE 14.254
+  Dra. Manuela Gondim · CRO-PE 14.254
 hashtags: [dentistaolinda, dentistarecife, ortodontiaolinda, implantedentario, clareamentodental, odontologia, olinda]

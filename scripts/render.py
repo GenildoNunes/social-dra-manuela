@@ -6,6 +6,7 @@ Uso:
     python scripts/render.py posts/2026-11-03-mito-aparelho
 """
 import argparse
+import base64
 import html
 import re
 import sys
@@ -18,6 +19,7 @@ from playwright.sync_api import sync_playwright
 
 RAIZ = Path(__file__).resolve().parent.parent
 POSTS = RAIZ / "posts"
+MARCA = RAIZ / "marca"
 FEED = (1080, 1350)
 STORY = (1080, 1920)
 
@@ -29,9 +31,26 @@ def enfase(texto):
     return Markup(seguro.replace("\n", "<br>"))
 
 
+def data_uri(caminho: Path):
+    """Imagens vão embutidas no HTML: o set_content do navegador não lê arquivos locais."""
+    tipo = "image/png" if caminho.suffix.lower() == ".png" else "image/jpeg"
+    return f"data:{tipo};base64,{base64.b64encode(caminho.read_bytes()).decode()}"
+
+
+def foto(nome):
+    """`foto: consultorio-amplo.jpg` no post.yaml procura em marca/fotos/ (ou caminho relativo à raiz)."""
+    caminho = MARCA / "fotos" / nome
+    if not caminho.exists():
+        caminho = RAIZ / nome
+    return data_uri(caminho)
+
+
 def carregar_env():
     env = Environment(loader=FileSystemLoader(RAIZ / "templates"), autoescape=True)
     env.filters["enfase"] = enfase
+    env.filters["foto"] = foto
+    env.globals["logo"] = data_uri(MARCA / "logo.png")
+    env.globals["simbolo"] = data_uri(MARCA / "simbolo.png")
     return env
 
 

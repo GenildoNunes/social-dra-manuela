@@ -7,8 +7,9 @@
 
 - **Nome:** Dra. Manuela Gondim
 - **Instagram:** @dramanuelagondim
-- **Especialidade:** Ortodontista — CRO-PE 14.254
-- **Consultório:** Olinda Shopping, sala 40 · Bairro Novo · Olinda/PE (também atende Recife)
+- **Como se apresentar nas peças:** "Dra. Manuela Gondim · Consultório Odontológico · CRO-PE 14.254"
+  (usar "Ortodontista" só depois de confirmado o registro de especialista no CRO-PE)
+- **Consultório:** Olinda Shopping, sala 40 · Av. Pres. Getúlio Vargas, 1605 · Bairro Novo · Olinda/PE
 - **Agendamento:** WhatsApp (81) 99904-9697 — link `https://wa.me/5581999049697`
 - **Site / link da bio:** https://dramanuelagondim.github.io
 
@@ -43,16 +44,30 @@ dentistas parceiros especialistas (não falar "sócios"; falar "equipe de especi
 | Canal | Tratamento endodôntico |
 | Prevenção | Limpeza e restaurações |
 
-## Identidade visual
+## Identidade visual (padrão das artes de out/2026)
 
-- **Regra de uso (definida nos Reels):** **dourado identifica** — nome da Dra., "Ortodontista · CRO-PE 14.254",
-  barra lateral; **rosa é marca e ação** — logo, palavras-chave em destaque, CTA e WhatsApp.
-- **Rosa principal:** `#E22B8D` · rosa escuro `#B81C6F`
-- **Dourado:** `#B8945A` · dourado suave `#E9DCC4`
-- **Texto:** `#2B2326` · texto secundário `#6F6468`
-- **Fundo:** `#FBF4F0` (nude claro) · cartões `#FFFFFF`
-- **Fontes:** Playfair Display (títulos, elegante) + Montserrat (texto)
+Referência: artes "Mais que restaurações, um novo sorriso" e "Outubro Rosa", e a marca na parede do consultório.
+
+- **Clima:** delicado, feminino e premium — nude/rosé, fios dourados finos, ondas suaves, ícones em círculos nude.
+- **Logo das artes:** coração + "Dra. Manuela Gondim · Consultório Odontológico · CRO-PE 14.254"
+  (`marca/logo.png`, aplicado em bronze). Símbolo isolado: `marca/simbolo.png`.
+- **Marca física:** monograma **MG** dourado com dente + "DRA. MANUELA GONDIM — ODONTOLOGIA" (parede da recepção).
+- **Assinatura:** *"Cada sorriso tem a sua história!"* (frase da parede, em cursiva).
+- **Cores:** fundo nude `#FBF3EF` → `#EBD3C9` · títulos rosewood `#7A3E45` · texto `#6B4A4A` ·
+  destaque cursivo mauve `#B8656F` · bronze `#B07A52` → `#D8AE86` · selos nude `#F2DED6`.
+- **Tipografia:** Cormorant Garamond (títulos) · Lora (texto) · **Great Vibes** (palavras em destaque, `*assim*`) ·
+  Montserrat (rodapé/contadores).
+- **Regra de cor herdada dos Reels:** bronze/dourado identifica (nome, CRO); o destaque colorido marca a ação.
+- **Fotos do consultório:** `marca/fotos/` — usar em capas (`foto:` no slide `capa`, aparece em arco) e no slide `foto`.
+  ⚠️ Nunca usar foto em que apareça a placa do Wi-Fi com a senha, nem foto de paciente sem TCLE.
 - Feed em formato retrato **1080×1350**; stories **1080×1920**.
+
+## Prova social
+
+- **Google:** nota **5,0 com 56 avaliações** (out/2026). Elogios recorrentes: atendimento acolhedor, estrutura,
+  qualidade "diferenciada" em Olinda.
+- ⚠️ Uso de depoimento/avaliação em post **só depois de validar o formato com o CRO-PE**.
+- Pendências no Perfil do Google: cadastrar **horário de funcionamento** e **site** (dramanuelagondim.github.io).
 
 ## ⚖️ Regras obrigatórias (Código de Ética Odontológica / CFO)
 

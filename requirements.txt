@@ -2,3 +2,4 @@ jinja2
 playwright
 pyyaml
 requests
+pillow
