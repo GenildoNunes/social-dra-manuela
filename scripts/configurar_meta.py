@@ -19,6 +19,7 @@ import requests
 VERSAO = os.environ.get("GRAPH_VERSION", "v23.0")
 REPO = "GenildoNunes/social-dra-manuela"
 INSTAGRAM = "dramanuelagondim"
+IG_ID_CONHECIDO = "17841451262637590"  # ID da conta @dramanuelagondim (mostrado no painel do app)
 
 
 def gh_exe():
@@ -51,8 +52,7 @@ def identificar_conta(token):
     if r:
         return "graph.instagram.com", r["user_id"], r.get("username")
 
-    print("\nNo painel da Meta (etapa 2), embaixo de 'dramanuelagondim', aparece um número.")
-    ig_id = input("Digite esse número aqui: ").strip()
+    ig_id = IG_ID_CONHECIDO
     for host in ("graph.facebook.com", "graph.instagram.com"):
         r = consultar(host, ig_id, token, "id,username")
         if r:
@@ -61,7 +61,13 @@ def identificar_conta(token):
 
 
 def salvar_segredo(gh, nome, valor):
-    subprocess.run([gh, "secret", "set", nome, "-R", REPO], input=valor, text=True, check=True)
+    env = dict(os.environ)
+    # O app do Claude guarda o login do gh numa pasta virtualizada; o terminal comum não a enxerga.
+    virtualizada = os.path.expandvars(
+        r"%LOCALAPPDATA%\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\GitHub CLI")
+    if os.path.exists(os.path.join(virtualizada, "hosts.yml")):
+        env["GH_CONFIG_DIR"] = virtualizada
+    subprocess.run([gh, "secret", "set", nome, "-R", REPO], input=valor, text=True, check=True, env=env)
 
 
 def ler_area_de_transferencia():
