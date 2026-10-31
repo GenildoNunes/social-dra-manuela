@@ -97,6 +97,11 @@ def main():
         print("Faltam IG_USER_ID, IG_TOKEN ou REPO_RAW_URL — nada a fazer.")
         return 0
 
+    if IG_USER_ID and TOKEN:
+        conta = api("GET", IG_USER_ID, fields="username,followers_count,media_count")
+        print(f"Conectado a @{conta.get('username')} · {conta.get('followers_count')} seguidores · "
+              f"{conta.get('media_count')} posts")
+
     agora = datetime.now(RECIFE)
     falhas = 0
     for arq in sorted(POSTS.glob("*/post.yaml")):
