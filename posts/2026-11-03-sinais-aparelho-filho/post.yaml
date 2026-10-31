@@ -1,41 +1,43 @@
 data: 2026-11-03
-hora: "12:00"
+hora: '12:00'
 formato: carrossel
 pilar: familia
 status: rascunho
 revisar: true
-substitui_msg: 12
 slides:
-  - tipo: capa
-    tag: Para mães e pais
-    titulo: "Seu filho precisa de *aparelho*?"
-    subtitulo: "5 sinais para observar em casa — salva para não esquecer."
-  - tipo: texto
-    numero: "01"
-    titulo: "Dentes *encavalados*"
-    texto: "Os dentes permanentes nascem sem espaço e ficam tortos ou uns por cima dos outros."
-  - tipo: texto
-    numero: "02"
-    titulo: "Respira pela *boca*"
-    texto: "Dormir de boca aberta ou roncar com frequência merece atenção: pode influenciar o crescimento da face e a posição dos dentes."
-  - tipo: texto
-    numero: "03"
-    titulo: "Chupeta ou dedo depois dos *4 anos*"
-    texto: "O hábito prolongado pode deixar a mordida aberta ou os dentes da frente projetados."
-  - tipo: texto
-    numero: "04"
-    titulo: "Mordida *cruzada*"
-    texto: "Ao fechar a boca, alguns dentes de cima ficam por dentro dos de baixo."
-  - tipo: texto
-    numero: "05"
-    titulo: "Perdeu dente de leite *cedo*"
-    texto: "Quando o dente de leite sai antes da hora, os vizinhos podem se mover e faltar espaço para o permanente."
-  - tipo: texto
-    titulo: "E quando *levar*?"
-    texto: "A primeira avaliação ortodôntica costuma ser indicada por volta dos 7 anos — mesmo que pareça tudo bem.\n\nQuanto antes a gente acompanha, mais simples pode ser o caminho."
-  - tipo: cta
-    titulo: "Cuide do sorriso de quem você *ama*"
-    subtitulo: "Agende a avaliação do seu filho. Cada caso é único."
+- tipo: capa
+  tag: Para mães e pais
+  titulo: Seu filho precisa de *aparelho*?
+  subtitulo: 5 sinais para observar em casa — salva para não esquecer.
+- tipo: texto
+  numero: '01'
+  titulo: Dentes *encavalados*
+  texto: Os dentes permanentes nascem sem espaço e ficam tortos ou uns por cima dos outros.
+- tipo: texto
+  numero: '02'
+  titulo: Respira pela *boca*
+  texto: 'Dormir de boca aberta ou roncar com frequência merece atenção: pode influenciar o crescimento da face e a posição dos dentes.'
+- tipo: texto
+  numero: '03'
+  titulo: Chupeta ou dedo depois dos *4 anos*
+  texto: O hábito prolongado pode deixar a mordida aberta ou os dentes da frente projetados.
+- tipo: texto
+  numero: '04'
+  titulo: Mordida *cruzada*
+  texto: Ao fechar a boca, alguns dentes de cima ficam por dentro dos de baixo.
+- tipo: texto
+  numero: '05'
+  titulo: Perdeu dente de leite *cedo*
+  texto: Quando o dente de leite sai antes da hora, os vizinhos podem se mover e faltar espaço para o permanente.
+- tipo: texto
+  titulo: E quando *levar*?
+  texto: |-
+    A primeira avaliação ortodôntica costuma ser indicada por volta dos 7 anos — mesmo que pareça tudo bem.
+
+    Quanto antes a gente acompanha, mais simples pode ser o caminho.
+- tipo: cta
+  titulo: Cuide do sorriso de quem você *ama*
+  subtitulo: Agende a avaliação do seu filho. Cada caso é único.
 legenda: |
   Mãe, esse post é pra você salvar 💕
 
@@ -46,4 +48,12 @@ legenda: |
   📍 Olinda Shopping, sala 40 — pertinho de quem é de Olinda e de Paulista
   Cada caso é único: só a avaliação presencial define o melhor caminho.
   Dra. Manuela Gondim · CRO-PE 14.254
-hashtags: [ortodontiainfantil, dentistaolinda, dentistapaulista, paulistape, olinda, maternidade, aparelhodental]
+hashtags:
+- ortodontiainfantil
+- dentistaolinda
+- dentistapaulista
+- paulistape
+- olinda
+- maternidade
+- aparelhodental
+telegram_msg: 35
