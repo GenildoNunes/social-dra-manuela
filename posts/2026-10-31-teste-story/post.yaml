@@ -2,7 +2,7 @@ data: 2026-10-31
 hora: 02:30
 formato: story
 pilar: conexao
-status: aprovado
+status: publicado
 slides:
 - tipo: foto
   foto: parede-logo-mg.jpg
@@ -11,3 +11,5 @@ slides:
 legenda: ''
 hashtags: []
 telegram_msg: 49
+publicado_em: 2026-10-31T02:40-03:00
+ig_media_id: '17975219880154079'
