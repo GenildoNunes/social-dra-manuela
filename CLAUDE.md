@@ -6,9 +6,10 @@ Instagram @dramanuelagondim sempre ativo, educativo e convidando para avaliaçã
 ## Antes de criar qualquer coisa, leia
 
 1. `marca/guia.md` — dados, tom de voz e **regras do CFO (obrigatórias)**.
-2. `marca/estrategia.md` — frequência, pilares e datas.
-3. `posts/` — os posts das últimas semanas, para **não repetir tema** e manter o rodízio de pilares.
-4. `pautas/` — se existir algum arquivo ali, é um pedido específico da Dra. Manuela: priorize.
+2. `marca/publico.md` — **quem segue a Dra.** (79% mulheres, 25–54 anos, Olinda e Paulista). Escreva para ela.
+3. `marca/estrategia.md` — frequência, pilares e datas.
+4. `posts/` — os posts das últimas semanas, para **não repetir tema** e manter o rodízio de pilares.
+5. `pautas/` — se existir algum arquivo ali, é um pedido específico da Dra. Manuela: priorize.
 
 ## Tarefa semanal
 

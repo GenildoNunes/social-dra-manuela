@@ -6,8 +6,8 @@ status: rascunho
 slides:
 - tipo: capa
   tag: Cuidado completo
-  titulo: Seu sorriso inteiro, em *um só lugar*
-  subtitulo: Do aparelho ao implante, com equipe de especialistas parceiros.
+  titulo: O sorriso da sua família, em *um só lugar*
+  subtitulo: Do aparelho do seu filho à prótese da sua mãe.
   foto: consultorio-amplo.jpg
 - tipo: lista
   titulo: O que cuidamos *aqui*
@@ -32,20 +32,20 @@ slides:
   titulo: Comece pela *avaliação*
   subtitulo: Agende sua consulta de avaliação e planejamento.
 legenda: |
-  Sabe aquela correria de ir num dentista para cada coisa? Aqui não precisa 💖
+  Sabe aquela correria de levar cada um da família num dentista diferente? Aqui não precisa 💖
 
-  No consultório você encontra cuidado completo para o sorriso: ortodontia, clareamento, estética, implantes, próteses, canal, cirurgias e prevenção. Eu faço a sua avaliação e, quando o caso pede outra especialidade, você conta com a nossa equipe de especialistas parceiros 🦷✨
+  No consultório você encontra cuidado completo para o sorriso de todo mundo: ortodontia (de criança e de adulto), clareamento, estética, implantes, próteses, canal, cirurgias e prevenção. Eu faço a avaliação e, quando o caso pede outra especialidade, vocês contam com a nossa equipe de especialistas parceiros 🦷✨
 
-  📍 Olinda Shopping, sala 40 — Bairro Novo, Olinda
+  📍 Olinda Shopping, sala 40 — Bairro Novo, pertinho de Paulista
   📲 Agende pelo WhatsApp no link da bio
 
   Dra. Manuela Gondim · CRO-PE 14.254
 hashtags:
 - dentistaolinda
-- dentistarecife
-- ortodontiaolinda
-- implantedentario
+- dentistapaulista
+- paulistape
+- ortodontiainfantil
+- protesedentaria
 - clareamentodental
-- odontologia
 - olinda
-telegram_msg: 26
+substitui_msg: 26

@@ -5,7 +5,7 @@
 ## Objetivo
 
 1. Manter o perfil **sempre ativo** sem depender da disposição da Dra. Manuela.
-2. Posicionar como **ortodontista em Olinda** (foco vende; a amplitude multidisciplinar aparece na avaliação).
+2. Posicionar como **a dentista de confiança da mulher de Olinda e Paulista — e da família dela** (foco vende; a amplitude multidisciplinar aparece na avaliação).
 3. Converter seguidores em **conversas no WhatsApp → avaliações**. O anúncio vende resultado e autoridade, nunca preço.
 
 ## Linhas que puxam a captação
@@ -26,13 +26,16 @@ Horários padrão: feed às **12h** ou **19h**; stories às **9h**.
 
 ### Banco de pautas automáticas (quando não há material da Dra.)
 
-| Pilar | Peso | Exemplos |
+Público-alvo: ver `marca/publico.md` — mulher de 25 a 54 anos, mãe, de Olinda/Paulista ("Carla", 38).
+
+| Pilar | Peso | Exemplos (sempre pensando na Carla) |
 |---|---|---|
-| Educa — dúvidas e cuidados | 35% | Quanto tempo dura o aparelho? Lente × faceta × clareamento. Por que a dentadura solta? |
-| Mito ou verdade | 20% | "Aparelho é só para adolescente" — MITO |
-| Vitrine multidisciplinar | 15% | Implantes, clareamento, próteses — "tudo num só lugar" |
-| Conexão — bastidores, biossegurança, Olinda | 15% | Planejamento de um caso, tecnologia usada, datas |
-| Convite — CTA para avaliação | 15% | "Seu sorriso merece uma avaliação" |
+| Ela mesma — autoestima e "nunca é tarde" | 25% | Aparelho discreto em adulta; lente × faceta × clareamento; "um dia eu cuido de mim" é hoje |
+| A família dela — filhos | 20% | Quando levar o filho ao ortodontista? Sinais na infância; chupeta e respiração pela boca |
+| Mito ou verdade | 15% | "Aparelho é só para adolescente" — MITO |
+| Conexão — a Dra., bastidores, Olinda/Paulista | 20% | Rotina, vôlei de praia, viagens de estudo, o consultório (é o que mais engaja) |
+| 45+ — voltar a sorrir | 10% | Próteses, reabilitação, "sorrir sem vergonha" (para ela ou para a mãe dela) |
+| Convite — CTA para avaliação | 10% | "Me chama no WhatsApp que eu te explico" |
 
 Regras:
 - Pelo menos 1 post por semana termina com convite para a consulta de avaliação (WhatsApp).
@@ -54,5 +57,6 @@ Regras:
 
 ## Hashtags base (escolher 5–8 por post)
 
-#ortodontiaolinda #ortodontistaolinda #dentistaolinda #dentistarecife #aparelhodental
-#sorriso #olinda #recife #alinhadores #clareamentodental #protesedentaria #lentesdecontato
+#ortodontiaolinda #dentistaolinda #dentistapaulista #paulistape #dentistarecife #aparelhodental
+#sorriso #olinda #recife #alinhadores #clareamentodental #protesedentaria #autoestima #ortodontiainfantil
+(Sempre incluir ao menos uma de Olinda e uma de Paulista.)

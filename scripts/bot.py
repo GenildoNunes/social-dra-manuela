@@ -5,7 +5,7 @@
 
 Roda no GitHub Actions (.github/workflows/bot.yml). Variáveis de ambiente:
     TELEGRAM_TOKEN, TELEGRAM_CHAT_IDS (separados por vírgula), REPO_RAW_URL
-    ANTHROPIC_API_KEY (opcional): sem ela, o pedido de ajuste fica anotado no post para o agente semanal.
+O bot não usa IA (custo zero): pedidos de ajuste ficam anotados no post e a rotina diária do agente aplica.
 
 Quem aprova é só quem está em TELEGRAM_CHAT_IDS; mensagens de outras pessoas são ignoradas.
 """
@@ -13,12 +13,10 @@ import datetime
 import hashlib
 import json
 import os
-import re
 import sys
 from pathlib import Path
 
 import requests
-import yaml
 
 import posts
 
@@ -26,7 +24,6 @@ TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
 CHATS = {int(c) for c in os.environ.get("TELEGRAM_CHAT_IDS", "").split(",") if c.strip()}
 RAW = os.environ.get("REPO_RAW_URL", "").rstrip("/")
 ESTADO = posts.RAIZ / "estado" / "telegram.json"
-PRECISA_RENDER = posts.RAIZ / ".precisa_render"  # pastas a re-renderizar, uma por linha
 
 ROTULO = {"aprovado": "✅ Aprovado", "recusado": "❌ Recusado", "ajuste": "✏️ Em ajuste"}
 
@@ -81,7 +78,14 @@ def enviar():
         imagens = sorted(pasta.glob("slide-*.jpg"))
         if not imagens:
             continue
+        antiga = post.pop("substitui_msg", None)
         for chat in CHATS:
+            if antiga:  # tira os botões da versão anterior para não aprovar a errada
+                try:
+                    tg("editMessageText", chat_id=chat, message_id=antiga,
+                       text="🔄 Substituído por uma versão nova (logo abaixo).")
+                except RuntimeError:
+                    pass
             midia = [{"type": "photo", "media": url_imagem(pasta, i)} for i in imagens[:10]]
             if len(midia) == 1:
                 tg("sendPhoto", chat_id=chat, photo=midia[0]["media"])
@@ -153,59 +157,13 @@ def tratar_texto(msg):
                         "toque em ✏️ Ajustar no post e depois me escreva o que quer.")
         return
 
+    # Sem custo extra: o bot só anota o pedido; quem aplica é a rotina diária do agente (dentro da assinatura).
     post = posts.carregar(pendente)
     post.pop("aguardando_ajuste", None)
     post.setdefault("pedidos_ajuste", []).append(texto)
-
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        posts.salvar(pendente, post)
-        responder(chat, "Anotei o seu pedido ✍️ O ajuste será feito na próxima rodada de criação dos posts.")
-        return
-
-    responder(chat, "Ajustando… em alguns minutos te mando a nova versão ⏳")
-    try:
-        novo = reescrever(post, texto)
-    except Exception as e:  # falha da IA não pode travar o bot
-        print(f"ajuste falhou: {type(e).__name__}: {e}")
-        posts.salvar(pendente, post)
-        responder(chat, "Não consegui ajustar agora 😕 Deixei o pedido anotado para a próxima rodada.")
-        return
-    posts.salvar(pendente, novo)
-    with PRECISA_RENDER.open("a", encoding="utf-8") as f:
-        f.write(pendente.name + "\n")
-    print(f"ajustado: {pendente.name}")
-
-
-def reescrever(post: dict, pedido: str) -> dict:
-    import anthropic
-
-    contexto = "\n\n".join((posts.RAIZ / arq).read_text(encoding="utf-8")
-                           for arq in ("CLAUDE.md", "marca/guia.md", "marca/estrategia.md"))
-    atual = {k: v for k, v in post.items() if k not in ("telegram_msg", "pedidos_ajuste")}
-    resposta = anthropic.Anthropic().beta.messages.create(
-        model="claude-opus-5-5",
-        max_tokens=16000,
-        output_config={"effort": "medium"},
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        system=[{"type": "text", "text": contexto, "cache_control": {"type": "ephemeral"}}],
-        messages=[{"role": "user", "content": (
-            "A Dra. Manuela pediu um ajuste neste post. Reescreva o post.yaml aplicando o pedido, "
-            "respeitando o guia de marca e as regras do CFO. Mantenha data e hora, a menos que ela peça para mudar. "
-            "Responda somente com o YAML completo, sem explicações.\n\n"
-            f"Pedido da Dra.: {pedido}\n\npost.yaml atual:\n"
-            + yaml.safe_dump(atual, allow_unicode=True, sort_keys=False, default_flow_style=False))}],
-    )
-    if resposta.stop_reason == "refusal":
-        raise RuntimeError("pedido recusado pelo modelo")
-    texto = next(b.text for b in resposta.content if b.type == "text")
-    texto = re.sub(r"^```(?:yaml)?\s*|\s*```$", "", texto.strip())
-    novo = yaml.safe_load(texto)
-    if not isinstance(novo, dict) or not novo.get("slides"):
-        raise ValueError("resposta sem slides")
-    novo["status"] = "rascunho"  # volta para aprovação
-    novo["pedidos_ajuste"] = post.get("pedidos_ajuste", [])
-    return novo
+    posts.salvar(pendente, post)
+    responder(chat, "Anotei o seu pedido ✍️ Amanhã cedo te mando a nova versão para aprovar.")
+    print(f"pedido de ajuste anotado: {pendente.name}")
 
 
 def processar():

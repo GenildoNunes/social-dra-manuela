@@ -39,7 +39,7 @@ Abra `posts/previa.html` para ver a semana.
 - [x] Gerador de artes + prévia
 - [x] Publicador automático (Instagram Graph API + GitHub Actions) — falta [configurar o token](docs/configurar-instagram.md)
 - [x] Bot do Telegram ("Sandra", @SecretariaDrManuela_bot): aprovação ✅ ✏️ ❌ a cada 10 min (7h–0h)
-- [ ] Ajuste por IA no bot — falta o segredo `ANTHROPIC_API_KEY`
+- [x] Ajustes sem custo extra: o bot anota, a rotina diária do agente aplica (assinatura)
 - [ ] Envio de vídeos/Reels pela Dra. no bot
 - [ ] Agente semanal agendado na nuvem
 - [ ] Relatório mensal de desempenho
