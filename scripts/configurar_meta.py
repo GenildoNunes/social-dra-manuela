@@ -30,33 +30,34 @@ def gh_exe():
     sys.exit("GitHub CLI (gh) não encontrado.")
 
 
+def consultar(host, caminho, token, fields):
+    r = requests.get(f"https://{host}/{VERSAO}/{caminho}",
+                     params={"fields": fields, "access_token": token}, timeout=30).json()
+    if "error" in r:
+        e = r["error"]
+        # Nunca imprimir a mensagem crua: a Meta às vezes repete o token dentro dela.
+        print(f"   · {host}/{caminho}: erro {e.get('code')}/{e.get('error_subcode', '-')} ({e.get('type')})")
+        return None
+    return r
+
+
 def identificar_conta(token):
     """Descobre em qual API o token funciona e qual conta do Instagram ele acessa.
 
-    Tokens do login pelo Instagram respondem em graph.instagram.com; tokens de usuário do sistema
-    (login unificado / Facebook) respondem em graph.facebook.com, listando as contas vinculadas.
+    Tokens do login pelo Instagram respondem em graph.instagram.com/me; tokens do login unificado
+    (começam com EAA) respondem em graph.facebook.com consultando o ID da conta diretamente.
     """
-    r = requests.get(f"https://graph.instagram.com/{VERSAO}/me",
-                     params={"fields": "user_id,username", "access_token": token}, timeout=30).json()
-    if "error" not in r:
+    r = consultar("graph.instagram.com", "me", token, "user_id,username")
+    if r:
         return "graph.instagram.com", r["user_id"], r.get("username")
 
-    fb = f"https://graph.facebook.com/{VERSAO}"
-    r = requests.get(f"{fb}/me/accounts", timeout=30, params={
-        "fields": "instagram_business_account{id,username}", "access_token": token}).json()
-    for pagina in r.get("data", []):
-        conta = pagina.get("instagram_business_account")
-        if conta:
-            return "graph.facebook.com", conta["id"], conta.get("username")
-    # Usuário do sistema pode ter a conta do Instagram atribuída direto, sem Página.
-    r = requests.get(f"{fb}/me", timeout=30, params={
-        "fields": "instagram_accounts{id,username}", "access_token": token}).json()
-    for conta in r.get("instagram_accounts", {}).get("data", []):
-        return "graph.facebook.com", conta["id"], conta.get("username")
-    erro = r.get("error", {})
-    # Nunca imprimir a mensagem crua: a Meta às vezes repete o token dentro dela.
-    sys.exit(f"Não consegui identificar a conta do Instagram com esse token "
-             f"(erro {erro.get('code')}: {erro.get('type')}). Gere um token novo e tente de novo.")
+    print("\nNo painel da Meta (etapa 2), embaixo de 'dramanuelagondim', aparece um número.")
+    ig_id = input("Digite esse número aqui: ").strip()
+    for host in ("graph.facebook.com", "graph.instagram.com"):
+        r = consultar(host, ig_id, token, "id,username")
+        if r:
+            return host, r["id"], r.get("username")
+    sys.exit("Não consegui acessar a conta com esse token e esse número. Me mande o print desta tela.")
 
 
 def salvar_segredo(gh, nome, valor):
@@ -86,10 +87,15 @@ def extrair_token(texto):
 def main():
     print("== Configuração do Instagram ==\n")
     print("1. No Chrome, clique em 'Gerar token' e COPIE o token.")
-    input("2. Volte aqui e aperte Enter (não precisa colar nada)... ")
-    token = extrair_token(ler_area_de_transferencia())
-    if not token.startswith(("EAA", "IG")):
-        sys.exit("A área de transferência não tem um token. Copie o token no Chrome e rode de novo.")
+    while True:
+        colado = getpass.getpass("2. Cole aqui (fica invisível) ou só aperte Enter: ")
+        token = extrair_token(colado or ler_area_de_transferencia())
+        if token.startswith(("EAA", "IG")) and len(token) > 50:
+            break
+        if token:
+            print(f"   Encontrei um texto de {len(token)} caracteres, mas não parece um token. Copie de novo.\n")
+        else:
+            print("   A área de transferência está vazia. Copie o token no Chrome e tente de novo.\n")
     limpar_area_de_transferencia()
     print(f"Token lido ({len(token)} caracteres, terminando em ...{token[-4:]}). Verificando...")
 
