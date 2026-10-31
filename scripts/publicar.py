@@ -108,6 +108,9 @@ def main():
         post = yaml.safe_load(arq.read_text(encoding="utf-8"))
         if post.get("status") != "aprovado" or not vencido(post, agora):
             continue
+        if post.get("bloqueio"):  # ex.: depoimento aguardando validação do CRO-PE
+            print(f"⏸ {arq.parent.name}: bloqueado ({post['bloqueio']})")
+            continue
         print(f"→ {arq.parent.name}")
         try:
             media_id = publicar(arq.parent, post)

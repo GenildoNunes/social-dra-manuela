@@ -23,6 +23,9 @@ Cada post vive em `posts/AAAA-MM-DD-slug-curto/post.yaml`. Veja os exemplos exis
 formato. Tipos de slide disponíveis: `capa`, `texto`, `mito`, `lista`, `foto`, `cta`.
 - `capa` aceita `foto: <arquivo>` (de `marca/fotos/`), mostrada em arco ao lado do título.
 - `foto` usa a foto de fundo inteira, com `titulo` e `texto` curtos embaixo.
+- `depoimento` mostra uma avaliação do Google (`texto` + `autor`) ou a nota geral (`nota: "5,0"` + `texto`).
+  Use só avaliações de `marca/avaliacoes.yaml`, sem reescrever. Todo post com depoimento leva
+  `bloqueio: "validacao CRO-PE"` até a Dra. confirmar o formato — o publicador não publica posts bloqueados.
 Use `*palavra*` para destacar uma ou duas palavras em cursiva (não frases longas).
 Mantenha os textos curtos — cabem ~35 palavras por slide. Varie as fotos entre os posts.
 

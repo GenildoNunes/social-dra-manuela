@@ -85,6 +85,16 @@
   body.foto em { color: #F2C9C4; }
   body.foto .rodape { border-color: rgba(251,243,239,.5); }
 
+  /* Depoimento (prova social do Google) */
+  .estrelas { font-size: 46px; letter-spacing: 10px; margin-bottom: 26px;
+              background: linear-gradient(120deg, var(--bronze), var(--bronze-claro)); -webkit-background-clip: text; color: transparent; }
+  .aspas { font: 600 220px/0.6 'Cormorant Garamond', serif; color: var(--pill); margin: 40px 0 -40px -10px; height: 110px; }
+  .depo { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 58px; line-height: 1.2; color: var(--rosewood); }
+  .autor { margin-top: 36px; font: 600 24px Montserrat, sans-serif; letter-spacing: 3px; text-transform: uppercase; color: var(--bronze); }
+  .nota { display: flex; align-items: baseline; gap: 24px; }
+  .nota strong { font: 600 200px/1 'Cormorant Garamond', serif; color: var(--rosewood); }
+  .nota span { font-size: 34px; line-height: 1.35; color: var(--texto); }
+
   /* Story 1080x1920 */
   body.story .logo { top: 150px; }
   body.story .conteudo { top: 380px; bottom: 300px; }
@@ -130,6 +140,18 @@
   {% elif s.tipo == 'lista' %}
     {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}
     <ul class="lista">{% for item in s.itens %}<li class="icone"><i></i>{{ item | enfase }}</li>{% endfor %}</ul>
+
+  {% elif s.tipo == 'depoimento' %}
+    {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}
+    {% if s.nota %}
+    <div class="nota"><strong>{{ s.nota }}</strong><span>{{ s.texto | enfase }}</span></div>
+    <div class="estrelas">★★★★★</div>
+    {% else %}
+    <div class="estrelas">★★★★★</div>
+    <div class="aspas">“</div>
+    <div class="depo">{{ s.texto }}</div>
+    {% if s.autor %}<div class="autor">— {{ s.autor }} · avaliação no Google</div>{% endif %}
+    {% endif %}
 
   {% elif s.tipo == 'foto' %}
     {% if s.titulo %}<h2>{{ s.titulo | enfase }}</h2>{% endif %}

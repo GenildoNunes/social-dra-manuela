@@ -1,0 +1,48 @@
+# Avaliações públicas do Google (5,0 · 56 avaliações), coletadas em 30/10/2026.
+# Curadoria para posts de prova social:
+#   - nome sempre abreviado (primeiro nome + inicial), nunca foto do avaliador;
+#   - fora: avaliações que citam preço ("preço justo"), funcionários que podem não estar mais na equipe,
+#     superlativos ("melhor clínica de Pernambuco") ou comparação com outros profissionais/clínicas;
+#   - texto pode ser encurtado com "…", nunca reescrito ou "melhorado".
+# ⚠️ Posts com depoimento só saem depois que a Dra. confirmar com o CRO-PE que o formato é permitido
+#    (ver `validacao_cro` em marca/guia.md). Todas estas avaliações têm ~4 anos: priorizar pedir avaliações novas.
+
+fonte: Google · Consultório Odontológico Dra. Manuela Gondim
+nota: "5,0"
+total: 56
+coletado_em: 2026-10-30
+
+avaliacoes:
+  - autor: Mariana N.
+    texto: "Clínica organizada e com profissionais excelentes! Fui muito bem atendida pela Dra. Manuela Gondim! Estou muito satisfeita."
+    tema: [dra, atendimento]
+  - autor: Manuela C.
+    texto: "Amei o atendimento com dra manuela gondim, muito atenciosa, e equipe também show"
+    tema: [dra, atendimento]
+  - autor: Arthur P.
+    texto: "Clínica excelente, perdi meu medo de ir ao dentista. Indico demais!"
+    tema: [medo, acolhimento]
+  - autor: Marcelo D.
+    texto: "Muito bom, local super limpo e organizado! A dentista foi bem atenciosa e cuidadosa no procedimento"
+    tema: [cuidado, estrutura]
+  - autor: Eliete B.
+    texto: "Clínica diferenciada, atendimento acolhedor e profissionais qualificados. Super indico!"
+    tema: [acolhimento]
+  - autor: Tacyanna M.
+    texto: "Excelente atendimento, lugar super organizado! Um atendimento humanizado, prestativo! Eu super recomendo!"
+    tema: [acolhimento, estrutura]
+  - autor: Thayane B.
+    texto: "Equipe comprometida com o cuidado integral do paciente! Recomendo demais!"
+    tema: [cuidado, multidisciplinar]
+  - autor: Rebeka S.
+    texto: "Clínica muito organizada e super profissionais prontos para atender a todos com bastante carinho."
+    tema: [acolhimento]
+  - autor: Alexandre N.
+    texto: "Fui muito bem recebido. O atendimento da clínica é excelente, além de ser muito organizada e moderna!"
+    tema: [estrutura]
+  - autor: Mateus S.
+    texto: "Clínica muito bem equipada e com excelentes profissionais!!"
+    tema: [estrutura]
+  - autor: Roberto G.
+    texto: "É uma clínica exemplar. Moderna e eficiente."
+    tema: [estrutura]
