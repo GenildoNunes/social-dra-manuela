@@ -1,33 +1,36 @@
 data: 2026-11-06
-hora: "12:00"
+hora: '12:00'
 formato: carrossel
 pilar: vitrine
 status: rascunho
 slides:
-  - tipo: capa
-    tag: Cuidado completo
-    titulo: "Seu sorriso inteiro, em *um só lugar*"
-    subtitulo: "Do aparelho ao implante, com equipe de especialistas parceiros."
-    foto: consultorio-amplo.jpg
-  - tipo: lista
-    titulo: "O que cuidamos *aqui*"
-    itens:
-      - "Ortodontia — aparelhos e alinhadores"
-      - "Clareamento dental"
-      - "Estética — lentes e facetas"
-      - "Implantes e próteses"
-      - "Canal, cirurgias e sisos"
-      - "Limpeza e restaurações"
-  - tipo: texto
-    titulo: "Como *funciona*"
-    texto: "Na avaliação, eu olho o seu sorriso como um todo e monto o plano de tratamento com você.\n\nQuando o caso pede outra especialidade, você é atendido pela nossa equipe de especialistas parceiros — no mesmo consultório."
-  - tipo: foto
-    foto: parede-logo-mg.jpg
-    titulo: "Um espaço pensado para *você*"
-    texto: "Cada detalhe do consultório foi feito para você se sentir em casa."
-  - tipo: cta
-    titulo: "Comece pela *avaliação*"
-    subtitulo: "Agende sua consulta de avaliação e planejamento."
+- tipo: capa
+  tag: Cuidado completo
+  titulo: Seu sorriso inteiro, em *um só lugar*
+  subtitulo: Do aparelho ao implante, com equipe de especialistas parceiros.
+  foto: consultorio-amplo.jpg
+- tipo: lista
+  titulo: O que cuidamos *aqui*
+  itens:
+  - Ortodontia — aparelhos e alinhadores
+  - Clareamento dental
+  - Estética — lentes e facetas
+  - Implantes e próteses
+  - Canal, cirurgias e sisos
+  - Limpeza e restaurações
+- tipo: texto
+  titulo: Como *funciona*
+  texto: |-
+    Na avaliação, eu olho o seu sorriso como um todo e monto o plano de tratamento com você.
+
+    Quando o caso pede outra especialidade, você é atendido pela nossa equipe de especialistas parceiros — no mesmo consultório.
+- tipo: foto
+  foto: parede-logo-mg.jpg
+  titulo: Um espaço pensado para *você*
+  texto: Cada detalhe do consultório foi feito para você se sentir em casa.
+- tipo: cta
+  titulo: Comece pela *avaliação*
+  subtitulo: Agende sua consulta de avaliação e planejamento.
 legenda: |
   Sabe aquela correria de ir num dentista para cada coisa? Aqui não precisa 💖
 
@@ -37,4 +40,12 @@ legenda: |
   📲 Agende pelo WhatsApp no link da bio
 
   Dra. Manuela Gondim · CRO-PE 14.254
-hashtags: [dentistaolinda, dentistarecife, ortodontiaolinda, implantedentario, clareamentodental, odontologia, olinda]
+hashtags:
+- dentistaolinda
+- dentistarecife
+- ortodontiaolinda
+- implantedentario
+- clareamentodental
+- odontologia
+- olinda
+telegram_msg: 26

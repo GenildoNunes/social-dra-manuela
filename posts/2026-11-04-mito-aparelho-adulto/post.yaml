@@ -1,28 +1,28 @@
 data: 2026-11-04
-hora: "19:00"
+hora: '19:00'
 formato: carrossel
 pilar: mito-verdade
 status: rascunho
 slides:
-  - tipo: capa
-    tag: Mito ou verdade?
-    titulo: "Aparelho é coisa de *adolescente*?"
-    subtitulo: "Arrasta para descobrir o que a ortodontia diz sobre isso."
-  - tipo: mito
-    veredito: Mito
-    frase: "Depois dos 18 anos não adianta mais usar aparelho."
-    texto: "Os dentes podem ser movimentados em qualquer idade, desde que *gengiva e ossos estejam saudáveis*. Cada vez mais adultos fazem tratamento ortodôntico."
-  - tipo: mito
-    veredito: Verdade
-    frase: "Existem opções mais discretas para adultos."
-    texto: "Aparelhos estéticos e alinhadores transparentes são alternativas que *chamam menos atenção* no dia a dia. A indicação depende de cada caso."
-  - tipo: mito
-    veredito: Mito
-    frase: "Aparelho serve só para deixar o sorriso bonito."
-    texto: "Dentes bem posicionados também ajudam na *mastigação*, na *higiene* e no equilíbrio da mordida."
-  - tipo: cta
-    titulo: "Nunca é tarde para cuidar do seu *sorriso*"
-    subtitulo: "Agende sua avaliação e descubra qual tratamento combina com você."
+- tipo: capa
+  tag: Mito ou verdade?
+  titulo: Aparelho é coisa de *adolescente*?
+  subtitulo: Arrasta para descobrir o que a ortodontia diz sobre isso.
+- tipo: mito
+  veredito: Mito
+  frase: Depois dos 18 anos não adianta mais usar aparelho.
+  texto: Os dentes podem ser movimentados em qualquer idade, desde que *gengiva e ossos estejam saudáveis*. Cada vez mais adultos fazem tratamento ortodôntico.
+- tipo: mito
+  veredito: Verdade
+  frase: Existem opções mais discretas para adultos.
+  texto: Aparelhos estéticos e alinhadores transparentes são alternativas que *chamam menos atenção* no dia a dia. A indicação depende de cada caso.
+- tipo: mito
+  veredito: Mito
+  frase: Aparelho serve só para deixar o sorriso bonito.
+  texto: Dentes bem posicionados também ajudam na *mastigação*, na *higiene* e no equilíbrio da mordida.
+- tipo: cta
+  titulo: Nunca é tarde para cuidar do seu *sorriso*
+  subtitulo: Agende sua avaliação e descubra qual tratamento combina com você.
 legenda: |
   "Já passei da idade de usar aparelho" — escuto muito isso aqui no consultório! 😅
 
@@ -32,4 +32,12 @@ legenda: |
 
   Cada caso é único — só a avaliação presencial define o melhor tratamento.
   Dra. Manuela Gondim · CRO-PE 14.254
-hashtags: [ortodontiaadulto, aparelhodental, alinhadores, ortodontiaolinda, dentistaolinda, dentistarecife, sorriso]
+hashtags:
+- ortodontiaadulto
+- aparelhodental
+- alinhadores
+- ortodontiaolinda
+- dentistaolinda
+- dentistarecife
+- sorriso
+telegram_msg: 18

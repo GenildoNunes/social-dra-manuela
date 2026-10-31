@@ -1,12 +1,13 @@
 data: 2026-11-05
-hora: "09:00"
+hora: 09:00
 formato: story
 pilar: educa
 status: rascunho
 slides:
-  - tipo: capa
-    tag: Dica do dia
-    titulo: "A escova comum não limpa *entre* os dentes"
-    subtitulo: "Fio dental ou escova interdental completam a limpeza — principalmente para quem usa aparelho."
-legenda: ""
+- tipo: capa
+  tag: Dica do dia
+  titulo: A escova comum não limpa *entre* os dentes
+  subtitulo: Fio dental ou escova interdental completam a limpeza — principalmente para quem usa aparelho.
+legenda: ''
 hashtags: []
+telegram_msg: 20
